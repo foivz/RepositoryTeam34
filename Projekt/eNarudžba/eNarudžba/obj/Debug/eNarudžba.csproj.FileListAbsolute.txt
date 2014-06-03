@@ -16,3 +16,4 @@ C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\bin\
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.GlavnaFormaNarucitelj.resources
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.GlavnaFormaDjelatnik.resources
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PovijestNarudzbi.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PonudaJelovnika.resources

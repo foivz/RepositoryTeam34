@@ -41,6 +41,7 @@
             this.btnPonudaJelovnika.TabIndex = 0;
             this.btnPonudaJelovnika.Text = "Ponuda jelovnika";
             this.btnPonudaJelovnika.UseVisualStyleBackColor = true;
+            this.btnPonudaJelovnika.Click += new System.EventHandler(this.btnPonudaJelovnika_Click);
             // 
             // btnPovijestNarudžbi
             // 

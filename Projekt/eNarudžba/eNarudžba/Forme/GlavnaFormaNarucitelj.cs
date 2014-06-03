@@ -28,6 +28,12 @@ namespace eNarudžba.Forme
             povijestNarudzbi.Show();
         }
 
+        private void btnPonudaJelovnika_Click(object sender, EventArgs e)
+        {
+            PonudaJelovnika ponudaJelovnika = new PonudaJelovnika();
+            ponudaJelovnika.Show();
+        }
+
         
 
       

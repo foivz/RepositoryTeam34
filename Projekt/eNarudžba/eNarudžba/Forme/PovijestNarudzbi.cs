@@ -47,16 +47,32 @@ namespace eNarudžba.Forme
                     listView1.Items.Add(items);
                 }*/
 
-                var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika select new {n.IDnarudzba, n.DatumVrijemeZaprimanja, h.Naziv,h.IDvelicinaHrane ,n.CijenaNarudzbe }).ToList();
-             //   var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika group n.IDnarudzba by n.IDnarudzba into grup select grup).ToList();
+               // var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika select new {n.IDnarudzba, n.DatumVrijemeZaprimanja, h.Naziv,h.IDvelicinaHrane ,n.CijenaNarudzbe }).ToList();
+                var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika group n.IDnarudzba by n.IDnarudzba into grup select grup).ToList();
 
                // var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika group n.IDnarudzba by n.IDnarudzba into grup select new()).ToList();
 
-
-                BindingSource bindingSource = new BindingSource();
-                bindingSource.DataSource = upit;
-                dataGridView1.DataSource = bindingSource;
+                BindingSource bindingSourcePovijestNarudzbi = new BindingSource();
+                bindingSourcePovijestNarudzbi.DataSource = upit;
+                dgwPovijestNarudzbi.DataSource = bindingSourcePovijestNarudzbi;
             }
         }
+
+        private void PrikaziDetaljeNarudzbe() 
+        {
+            using (T34_DBEntities1 db = new T34_DBEntities1())
+            {
+
+              
+                
+                var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika select new { n.IDnarudzba, n.DatumVrijemeZaprimanja, h.Naziv, h.IDvelicinaHrane, n.CijenaNarudzbe }).ToList();
+
+
+                BindingSource bindingSourceDetalji = new BindingSource();
+                bindingSourceDetalji.DataSource = upit;
+                dgwPovijestNarudzbiDetalji.DataSource = bindingSourceDetalji;
+            }
+        }
+
     }
 }
