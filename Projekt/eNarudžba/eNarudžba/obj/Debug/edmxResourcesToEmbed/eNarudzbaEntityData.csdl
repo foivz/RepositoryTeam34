@@ -1,212 +1,133 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="T34_DBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityContainer Name="T34_DBEntities3" p1:LazyLoadingEnabled="true">
-    <EntitySet Name="Hrana" EntityType="T34_DBModel.Hrana" />
-    <EntitySet Name="HranaSastojci" EntityType="T34_DBModel.HranaSastojci" />
-    <EntitySet Name="Korisnik" EntityType="T34_DBModel.Korisnik" />
-    <EntitySet Name="Narudzba" EntityType="T34_DBModel.Narudzba" />
-    <EntitySet Name="NarudzbaHrana" EntityType="T34_DBModel.NarudzbaHrana" />
-    <EntitySet Name="NarudzbaPice" EntityType="T34_DBModel.NarudzbaPice" />
-    <EntitySet Name="NarudzbaStatus" EntityType="T34_DBModel.NarudzbaStatus" />
-    <EntitySet Name="Pice" EntityType="T34_DBModel.Pice" />
-    <EntitySet Name="Placanje" EntityType="T34_DBModel.Placanje" />
-    <EntitySet Name="PrivremenaTablica" EntityType="T34_DBModel.PrivremenaTablica" />
-    <EntitySet Name="Sastojci" EntityType="T34_DBModel.Sastojci" />
-    <EntitySet Name="Status" EntityType="T34_DBModel.Status" />
-    <EntitySet Name="sysdiagrams" EntityType="T34_DBModel.sysdiagrams" />
-    <EntitySet Name="TipKorisnika" EntityType="T34_DBModel.TipKorisnika" />
-    <EntitySet Name="VelicinaHrane" EntityType="T34_DBModel.VelicinaHrane" />
-    <AssociationSet Name="FK_Hrana_VelicinaHrane" Association="T34_DBModel.FK_Hrana_VelicinaHrane">
-      <End Role="VelicinaHrane" EntitySet="VelicinaHrane" />
-      <End Role="Hrana" EntitySet="Hrana" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HranaSastojci_Hrana" Association="T34_DBModel.FK_HranaSastojci_Hrana">
-      <End Role="Hrana" EntitySet="Hrana" />
-      <End Role="HranaSastojci" EntitySet="HranaSastojci" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NarudzbaHrana_Hrana" Association="T34_DBModel.FK_NarudzbaHrana_Hrana">
-      <End Role="Hrana" EntitySet="Hrana" />
-      <End Role="NarudzbaHrana" EntitySet="NarudzbaHrana" />
-    </AssociationSet>
-    <AssociationSet Name="FK_HranaSastojci_Sastojci" Association="T34_DBModel.FK_HranaSastojci_Sastojci">
-      <End Role="Sastojci" EntitySet="Sastojci" />
-      <End Role="HranaSastojci" EntitySet="HranaSastojci" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Korisnik_TipKorisnika" Association="T34_DBModel.FK_Korisnik_TipKorisnika">
-      <End Role="TipKorisnika" EntitySet="TipKorisnika" />
-      <End Role="Korisnik" EntitySet="Korisnik" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Narudzba_Korisnik" Association="T34_DBModel.FK_Narudzba_Korisnik">
-      <End Role="Korisnik" EntitySet="Korisnik" />
-      <End Role="Narudzba" EntitySet="Narudzba" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Narudzba_Placanje" Association="T34_DBModel.FK_Narudzba_Placanje">
-      <End Role="Placanje" EntitySet="Placanje" />
-      <End Role="Narudzba" EntitySet="Narudzba" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NarudzbaHrana_Narudzba" Association="T34_DBModel.FK_NarudzbaHrana_Narudzba">
-      <End Role="Narudzba" EntitySet="Narudzba" />
-      <End Role="NarudzbaHrana" EntitySet="NarudzbaHrana" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NarudzbaPice_Narudzba" Association="T34_DBModel.FK_NarudzbaPice_Narudzba">
-      <End Role="Narudzba" EntitySet="Narudzba" />
-      <End Role="NarudzbaPice" EntitySet="NarudzbaPice" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NarudzbaStatus_Narudzba" Association="T34_DBModel.FK_NarudzbaStatus_Narudzba">
-      <End Role="Narudzba" EntitySet="Narudzba" />
-      <End Role="NarudzbaStatus" EntitySet="NarudzbaStatus" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NarudzbaPice_Pice" Association="T34_DBModel.FK_NarudzbaPice_Pice">
-      <End Role="Pice" EntitySet="Pice" />
-      <End Role="NarudzbaPice" EntitySet="NarudzbaPice" />
-    </AssociationSet>
-    <AssociationSet Name="FK_NarudzbaStatus_Status" Association="T34_DBModel.FK_NarudzbaStatus_Status">
-      <End Role="Status" EntitySet="Status" />
-      <End Role="NarudzbaStatus" EntitySet="NarudzbaStatus" />
-    </AssociationSet>
-  </EntityContainer>
+<Schema Namespace="T34_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Hrana">
     <Key>
       <PropertyRef Name="IDhrana" />
     </Key>
-    <Property Name="IDhrana" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Cijena" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="IDhrana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cijena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="IDvelicinaHrane" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="VelicinaHrane" Relationship="T34_DBModel.FK_Hrana_VelicinaHrane" FromRole="Hrana" ToRole="VelicinaHrane" />
-    <NavigationProperty Name="HranaSastojci" Relationship="T34_DBModel.FK_HranaSastojci_Hrana" FromRole="Hrana" ToRole="HranaSastojci" />
-    <NavigationProperty Name="NarudzbaHrana" Relationship="T34_DBModel.FK_NarudzbaHrana_Hrana" FromRole="Hrana" ToRole="NarudzbaHrana" />
+    <NavigationProperty Name="VelicinaHrane" Relationship="Self.FK_Hrana_VelicinaHrane" FromRole="Hrana" ToRole="VelicinaHrane" />
+    <NavigationProperty Name="HranaSastojci" Relationship="Self.FK_HranaSastojci_Hrana" FromRole="Hrana" ToRole="HranaSastojci" />
+    <NavigationProperty Name="NarudzbaHrana" Relationship="Self.FK_NarudzbaHrana_Hrana" FromRole="Hrana" ToRole="NarudzbaHrana" />
   </EntityType>
   <EntityType Name="HranaSastojci">
     <Key>
       <PropertyRef Name="IDhranaSastojci" />
     </Key>
-    <Property Name="IDhranaSastojci" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IDhranaSastojci" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDsastojci" Type="Int32" Nullable="false" />
     <Property Name="IDhrana" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Hrana" Relationship="T34_DBModel.FK_HranaSastojci_Hrana" FromRole="HranaSastojci" ToRole="Hrana" />
-    <NavigationProperty Name="Sastojci" Relationship="T34_DBModel.FK_HranaSastojci_Sastojci" FromRole="HranaSastojci" ToRole="Sastojci" />
+    <NavigationProperty Name="Hrana" Relationship="Self.FK_HranaSastojci_Hrana" FromRole="HranaSastojci" ToRole="Hrana" />
+    <NavigationProperty Name="Sastojci" Relationship="Self.FK_HranaSastojci_Sastojci" FromRole="HranaSastojci" ToRole="Sastojci" />
   </EntityType>
   <EntityType Name="Korisnik">
     <Key>
       <PropertyRef Name="OIB" />
     </Key>
     <Property Name="OIB" Type="Int64" Nullable="false" />
-    <Property Name="Ime" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Prezime" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Lozinka" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-    <Property Name="Adresa" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="Ime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Prezime" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Lozinka" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Adresa" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Student" Type="Boolean" Nullable="false" />
     <Property Name="TipKorisnika" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="TipKorisnika1" Relationship="T34_DBModel.FK_Korisnik_TipKorisnika" FromRole="Korisnik" ToRole="TipKorisnika" />
-    <NavigationProperty Name="Narudzba" Relationship="T34_DBModel.FK_Narudzba_Korisnik" FromRole="Korisnik" ToRole="Narudzba" />
+    <NavigationProperty Name="TipKorisnika1" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="Korisnik" ToRole="TipKorisnika" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Korisnik" ToRole="Narudzba" />
   </EntityType>
   <EntityType Name="Narudzba">
     <Key>
       <PropertyRef Name="IDnarudzba" />
     </Key>
-    <Property Name="IDnarudzba" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IDnarudzba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DatumVrijemeZaprimanja" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CijenaNarudzbe" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="CijenaNarudzbe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="IDnarucitelj" Type="Int64" Nullable="false" />
     <Property Name="IDplacanje" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Korisnik" Relationship="T34_DBModel.FK_Narudzba_Korisnik" FromRole="Narudzba" ToRole="Korisnik" />
-    <NavigationProperty Name="Placanje" Relationship="T34_DBModel.FK_Narudzba_Placanje" FromRole="Narudzba" ToRole="Placanje" />
-    <NavigationProperty Name="NarudzbaHrana" Relationship="T34_DBModel.FK_NarudzbaHrana_Narudzba" FromRole="Narudzba" ToRole="NarudzbaHrana" />
-    <NavigationProperty Name="NarudzbaPice" Relationship="T34_DBModel.FK_NarudzbaPice_Narudzba" FromRole="Narudzba" ToRole="NarudzbaPice" />
-    <NavigationProperty Name="NarudzbaStatus" Relationship="T34_DBModel.FK_NarudzbaStatus_Narudzba" FromRole="Narudzba" ToRole="NarudzbaStatus" />
+    <NavigationProperty Name="Korisnik" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Narudzba" ToRole="Korisnik" />
+    <NavigationProperty Name="Placanje" Relationship="Self.FK_Narudzba_Placanje" FromRole="Narudzba" ToRole="Placanje" />
+    <NavigationProperty Name="NarudzbaHrana" Relationship="Self.FK_NarudzbaHrana_Narudzba" FromRole="Narudzba" ToRole="NarudzbaHrana" />
+    <NavigationProperty Name="NarudzbaPice" Relationship="Self.FK_NarudzbaPice_Narudzba" FromRole="Narudzba" ToRole="NarudzbaPice" />
+    <NavigationProperty Name="NarudzbaStatus" Relationship="Self.FK_NarudzbaStatus_Narudzba" FromRole="Narudzba" ToRole="NarudzbaStatus" />
   </EntityType>
   <EntityType Name="NarudzbaHrana">
     <Key>
       <PropertyRef Name="IDnarudzbaHrana" />
     </Key>
-    <Property Name="IDnarudzbaHrana" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IDnarudzbaHrana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDnarudzba" Type="Int32" Nullable="false" />
     <Property Name="IDhrana" Type="Int32" Nullable="false" />
     <Property Name="Kolicina" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Hrana" Relationship="T34_DBModel.FK_NarudzbaHrana_Hrana" FromRole="NarudzbaHrana" ToRole="Hrana" />
-    <NavigationProperty Name="Narudzba" Relationship="T34_DBModel.FK_NarudzbaHrana_Narudzba" FromRole="NarudzbaHrana" ToRole="Narudzba" />
+    <NavigationProperty Name="Hrana" Relationship="Self.FK_NarudzbaHrana_Hrana" FromRole="NarudzbaHrana" ToRole="Hrana" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_NarudzbaHrana_Narudzba" FromRole="NarudzbaHrana" ToRole="Narudzba" />
   </EntityType>
   <EntityType Name="NarudzbaPice">
     <Key>
       <PropertyRef Name="IDnarudzbaPice" />
     </Key>
-    <Property Name="IDnarudzbaPice" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IDnarudzbaPice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDnarudzbe" Type="Int32" Nullable="false" />
     <Property Name="IDpice" Type="Int32" Nullable="false" />
     <Property Name="Kolicina" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Narudzba" Relationship="T34_DBModel.FK_NarudzbaPice_Narudzba" FromRole="NarudzbaPice" ToRole="Narudzba" />
-    <NavigationProperty Name="Pice" Relationship="T34_DBModel.FK_NarudzbaPice_Pice" FromRole="NarudzbaPice" ToRole="Pice" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_NarudzbaPice_Narudzba" FromRole="NarudzbaPice" ToRole="Narudzba" />
+    <NavigationProperty Name="Pice" Relationship="Self.FK_NarudzbaPice_Pice" FromRole="NarudzbaPice" ToRole="Pice" />
   </EntityType>
   <EntityType Name="NarudzbaStatus">
     <Key>
       <PropertyRef Name="IDnarudzbaStatus" />
     </Key>
-    <Property Name="IDnarudzbaStatus" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="IDnarudzbaStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IDnarudzba" Type="Int32" Nullable="false" />
     <Property Name="IDstatus" Type="Int32" Nullable="false" />
     <Property Name="VrijemeKreiranjaStatusa" Type="DateTime" Nullable="false" Precision="3" />
-    <NavigationProperty Name="Narudzba" Relationship="T34_DBModel.FK_NarudzbaStatus_Narudzba" FromRole="NarudzbaStatus" ToRole="Narudzba" />
-    <NavigationProperty Name="Status" Relationship="T34_DBModel.FK_NarudzbaStatus_Status" FromRole="NarudzbaStatus" ToRole="Status" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_NarudzbaStatus_Narudzba" FromRole="NarudzbaStatus" ToRole="Narudzba" />
+    <NavigationProperty Name="Status" Relationship="Self.FK_NarudzbaStatus_Status" FromRole="NarudzbaStatus" ToRole="Status" />
   </EntityType>
   <EntityType Name="Pice">
     <Key>
       <PropertyRef Name="IDpice" />
     </Key>
-    <Property Name="IDpice" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <Property Name="Cijena" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IDpice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cijena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Kolicina" Type="Double" Nullable="false" />
-    <NavigationProperty Name="NarudzbaPice" Relationship="T34_DBModel.FK_NarudzbaPice_Pice" FromRole="Pice" ToRole="NarudzbaPice" />
+    <NavigationProperty Name="NarudzbaPice" Relationship="Self.FK_NarudzbaPice_Pice" FromRole="Pice" ToRole="NarudzbaPice" />
   </EntityType>
   <EntityType Name="Placanje">
     <Key>
       <PropertyRef Name="IDplacanje" />
     </Key>
-    <Property Name="IDplacanje" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="NacinPlacanja" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="Narudzba" Relationship="T34_DBModel.FK_Narudzba_Placanje" FromRole="Placanje" ToRole="Narudzba" />
-  </EntityType>
-  <EntityType Name="PrivremenaTablica">
-    <Key>
-      <PropertyRef Name="IDprivremenaTablica" />
-    </Key>
-    <Property Name="IDprivremenaTablica" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="IDnarudzbaH" Type="Int32" />
-    <Property Name="IDnarudzbaP" Type="Int32" />
-    <Property Name="NazivHrana" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
-    <Property Name="NazivPice" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
-    <Property Name="CijenaHrana" Type="Decimal" />
-    <Property Name="CijenaPice" Type="Decimal" />
-    <Property Name="Opis" Type="String" MaxLength="30" Unicode="true" FixedLength="true" />
-    <Property Name="Kolicina" Type="String" MaxLength="10" Unicode="true" FixedLength="true" />
+    <Property Name="IDplacanje" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NacinPlacanja" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Narudzba" Relationship="Self.FK_Narudzba_Placanje" FromRole="Placanje" ToRole="Narudzba" />
   </EntityType>
   <EntityType Name="Sastojci">
     <Key>
       <PropertyRef Name="IDsastojci" />
     </Key>
     <Property Name="IDsastojci" Type="Int32" Nullable="false" />
-    <Property Name="Naziv" Type="String" Nullable="false" MaxLength="60" Unicode="false" FixedLength="false" />
+    <Property Name="Naziv" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Kolicina" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="HranaSastojci" Relationship="T34_DBModel.FK_HranaSastojci_Sastojci" FromRole="Sastojci" ToRole="HranaSastojci" />
+    <NavigationProperty Name="HranaSastojci" Relationship="Self.FK_HranaSastojci_Sastojci" FromRole="Sastojci" ToRole="HranaSastojci" />
   </EntityType>
   <EntityType Name="Status">
     <Key>
       <PropertyRef Name="IDstatus" />
     </Key>
-    <Property Name="IDstatus" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="NarudzbaStatus" Relationship="T34_DBModel.FK_NarudzbaStatus_Status" FromRole="Status" ToRole="NarudzbaStatus" />
+    <Property Name="IDstatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="NarudzbaStatus" Relationship="Self.FK_NarudzbaStatus_Status" FromRole="Status" ToRole="NarudzbaStatus" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
       <PropertyRef Name="diagram_id" />
     </Key>
-    <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="principal_id" Type="Int32" Nullable="false" />
-    <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="version" Type="Int32" />
     <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
@@ -214,21 +135,21 @@
     <Key>
       <PropertyRef Name="IDtipKorisnika" />
     </Key>
-    <Property Name="IDtipKorisnika" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Naziv" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="Korisnik" Relationship="T34_DBModel.FK_Korisnik_TipKorisnika" FromRole="TipKorisnika" ToRole="Korisnik" />
+    <Property Name="IDtipKorisnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Korisnik" Relationship="Self.FK_Korisnik_TipKorisnika" FromRole="TipKorisnika" ToRole="Korisnik" />
   </EntityType>
   <EntityType Name="VelicinaHrane">
     <Key>
       <PropertyRef Name="IDvelicinaHrane" />
     </Key>
-    <Property Name="IDvelicinaHrane" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-    <Property Name="Opis" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
-    <NavigationProperty Name="Hrana" Relationship="T34_DBModel.FK_Hrana_VelicinaHrane" FromRole="VelicinaHrane" ToRole="Hrana" />
+    <Property Name="IDvelicinaHrane" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Opis" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Hrana" Relationship="Self.FK_Hrana_VelicinaHrane" FromRole="VelicinaHrane" ToRole="Hrana" />
   </EntityType>
   <Association Name="FK_Hrana_VelicinaHrane">
-    <End Role="VelicinaHrane" Type="T34_DBModel.VelicinaHrane" Multiplicity="1" />
-    <End Role="Hrana" Type="T34_DBModel.Hrana" Multiplicity="*" />
+    <End Role="VelicinaHrane" Type="Self.VelicinaHrane" Multiplicity="1" />
+    <End Role="Hrana" Type="Self.Hrana" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="VelicinaHrane">
         <PropertyRef Name="IDvelicinaHrane" />
@@ -239,8 +160,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HranaSastojci_Hrana">
-    <End Role="Hrana" Type="T34_DBModel.Hrana" Multiplicity="1" />
-    <End Role="HranaSastojci" Type="T34_DBModel.HranaSastojci" Multiplicity="*" />
+    <End Role="Hrana" Type="Self.Hrana" Multiplicity="1" />
+    <End Role="HranaSastojci" Type="Self.HranaSastojci" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Hrana">
         <PropertyRef Name="IDhrana" />
@@ -251,8 +172,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NarudzbaHrana_Hrana">
-    <End Role="Hrana" Type="T34_DBModel.Hrana" Multiplicity="1" />
-    <End Role="NarudzbaHrana" Type="T34_DBModel.NarudzbaHrana" Multiplicity="*" />
+    <End Role="Hrana" Type="Self.Hrana" Multiplicity="1" />
+    <End Role="NarudzbaHrana" Type="Self.NarudzbaHrana" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Hrana">
         <PropertyRef Name="IDhrana" />
@@ -263,8 +184,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_HranaSastojci_Sastojci">
-    <End Role="Sastojci" Type="T34_DBModel.Sastojci" Multiplicity="1" />
-    <End Role="HranaSastojci" Type="T34_DBModel.HranaSastojci" Multiplicity="*" />
+    <End Role="Sastojci" Type="Self.Sastojci" Multiplicity="1" />
+    <End Role="HranaSastojci" Type="Self.HranaSastojci" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Sastojci">
         <PropertyRef Name="IDsastojci" />
@@ -275,8 +196,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Korisnik_TipKorisnika">
-    <End Role="TipKorisnika" Type="T34_DBModel.TipKorisnika" Multiplicity="1" />
-    <End Role="Korisnik" Type="T34_DBModel.Korisnik" Multiplicity="*" />
+    <End Role="TipKorisnika" Type="Self.TipKorisnika" Multiplicity="1" />
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="TipKorisnika">
         <PropertyRef Name="IDtipKorisnika" />
@@ -287,8 +208,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Narudzba_Korisnik">
-    <End Role="Korisnik" Type="T34_DBModel.Korisnik" Multiplicity="1" />
-    <End Role="Narudzba" Type="T34_DBModel.Narudzba" Multiplicity="*" />
+    <End Role="Korisnik" Type="Self.Korisnik" Multiplicity="1" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Korisnik">
         <PropertyRef Name="OIB" />
@@ -299,8 +220,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_Narudzba_Placanje">
-    <End Role="Placanje" Type="T34_DBModel.Placanje" Multiplicity="1" />
-    <End Role="Narudzba" Type="T34_DBModel.Narudzba" Multiplicity="*" />
+    <End Role="Placanje" Type="Self.Placanje" Multiplicity="1" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Placanje">
         <PropertyRef Name="IDplacanje" />
@@ -311,8 +232,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NarudzbaHrana_Narudzba">
-    <End Role="Narudzba" Type="T34_DBModel.Narudzba" Multiplicity="1" />
-    <End Role="NarudzbaHrana" Type="T34_DBModel.NarudzbaHrana" Multiplicity="*" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+    <End Role="NarudzbaHrana" Type="Self.NarudzbaHrana" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Narudzba">
         <PropertyRef Name="IDnarudzba" />
@@ -323,8 +244,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NarudzbaPice_Narudzba">
-    <End Role="Narudzba" Type="T34_DBModel.Narudzba" Multiplicity="1" />
-    <End Role="NarudzbaPice" Type="T34_DBModel.NarudzbaPice" Multiplicity="*" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+    <End Role="NarudzbaPice" Type="Self.NarudzbaPice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Narudzba">
         <PropertyRef Name="IDnarudzba" />
@@ -335,8 +256,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NarudzbaStatus_Narudzba">
-    <End Role="Narudzba" Type="T34_DBModel.Narudzba" Multiplicity="1" />
-    <End Role="NarudzbaStatus" Type="T34_DBModel.NarudzbaStatus" Multiplicity="*" />
+    <End Role="Narudzba" Type="Self.Narudzba" Multiplicity="1" />
+    <End Role="NarudzbaStatus" Type="Self.NarudzbaStatus" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Narudzba">
         <PropertyRef Name="IDnarudzba" />
@@ -347,8 +268,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NarudzbaPice_Pice">
-    <End Role="Pice" Type="T34_DBModel.Pice" Multiplicity="1" />
-    <End Role="NarudzbaPice" Type="T34_DBModel.NarudzbaPice" Multiplicity="*" />
+    <End Role="Pice" Type="Self.Pice" Multiplicity="1" />
+    <End Role="NarudzbaPice" Type="Self.NarudzbaPice" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Pice">
         <PropertyRef Name="IDpice" />
@@ -359,8 +280,8 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_NarudzbaStatus_Status">
-    <End Role="Status" Type="T34_DBModel.Status" Multiplicity="1" />
-    <End Role="NarudzbaStatus" Type="T34_DBModel.NarudzbaStatus" Multiplicity="*" />
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="NarudzbaStatus" Type="Self.NarudzbaStatus" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Status">
         <PropertyRef Name="IDstatus" />
@@ -370,4 +291,68 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityContainer Name="T34_DBEntities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Hrana" EntityType="Self.Hrana" />
+    <EntitySet Name="HranaSastojci" EntityType="Self.HranaSastojci" />
+    <EntitySet Name="Korisnik" EntityType="Self.Korisnik" />
+    <EntitySet Name="Narudzba" EntityType="Self.Narudzba" />
+    <EntitySet Name="NarudzbaHrana" EntityType="Self.NarudzbaHrana" />
+    <EntitySet Name="NarudzbaPice" EntityType="Self.NarudzbaPice" />
+    <EntitySet Name="NarudzbaStatus" EntityType="Self.NarudzbaStatus" />
+    <EntitySet Name="Pice" EntityType="Self.Pice" />
+    <EntitySet Name="Placanje" EntityType="Self.Placanje" />
+    <EntitySet Name="Sastojci" EntityType="Self.Sastojci" />
+    <EntitySet Name="Status" EntityType="Self.Status" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="TipKorisnika" EntityType="Self.TipKorisnika" />
+    <EntitySet Name="VelicinaHrane" EntityType="Self.VelicinaHrane" />
+    <AssociationSet Name="FK_Hrana_VelicinaHrane" Association="Self.FK_Hrana_VelicinaHrane">
+      <End Role="VelicinaHrane" EntitySet="VelicinaHrane" />
+      <End Role="Hrana" EntitySet="Hrana" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HranaSastojci_Hrana" Association="Self.FK_HranaSastojci_Hrana">
+      <End Role="Hrana" EntitySet="Hrana" />
+      <End Role="HranaSastojci" EntitySet="HranaSastojci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NarudzbaHrana_Hrana" Association="Self.FK_NarudzbaHrana_Hrana">
+      <End Role="Hrana" EntitySet="Hrana" />
+      <End Role="NarudzbaHrana" EntitySet="NarudzbaHrana" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HranaSastojci_Sastojci" Association="Self.FK_HranaSastojci_Sastojci">
+      <End Role="Sastojci" EntitySet="Sastojci" />
+      <End Role="HranaSastojci" EntitySet="HranaSastojci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Korisnik_TipKorisnika" Association="Self.FK_Korisnik_TipKorisnika">
+      <End Role="TipKorisnika" EntitySet="TipKorisnika" />
+      <End Role="Korisnik" EntitySet="Korisnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Narudzba_Korisnik" Association="Self.FK_Narudzba_Korisnik">
+      <End Role="Korisnik" EntitySet="Korisnik" />
+      <End Role="Narudzba" EntitySet="Narudzba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Narudzba_Placanje" Association="Self.FK_Narudzba_Placanje">
+      <End Role="Placanje" EntitySet="Placanje" />
+      <End Role="Narudzba" EntitySet="Narudzba" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NarudzbaHrana_Narudzba" Association="Self.FK_NarudzbaHrana_Narudzba">
+      <End Role="Narudzba" EntitySet="Narudzba" />
+      <End Role="NarudzbaHrana" EntitySet="NarudzbaHrana" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NarudzbaPice_Narudzba" Association="Self.FK_NarudzbaPice_Narudzba">
+      <End Role="Narudzba" EntitySet="Narudzba" />
+      <End Role="NarudzbaPice" EntitySet="NarudzbaPice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NarudzbaStatus_Narudzba" Association="Self.FK_NarudzbaStatus_Narudzba">
+      <End Role="Narudzba" EntitySet="Narudzba" />
+      <End Role="NarudzbaStatus" EntitySet="NarudzbaStatus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NarudzbaPice_Pice" Association="Self.FK_NarudzbaPice_Pice">
+      <End Role="Pice" EntitySet="Pice" />
+      <End Role="NarudzbaPice" EntitySet="NarudzbaPice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NarudzbaStatus_Status" Association="Self.FK_NarudzbaStatus_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="NarudzbaStatus" EntitySet="NarudzbaStatus" />
+    </AssociationSet>
+  </EntityContainer>
 </Schema>

@@ -90,12 +90,13 @@ namespace eNarudžba.Forme
         {
             try
             {
-
-                using (T34_DBEntities3 db = new T34_DBEntities3())
-                {
+                
+                using (T34_DBEntities2 db=new T34_DBEntities2())
+                {                                                                   //makni loz==pass    //&& status!=1
                     var upit = (from k in db.Korisnik where k.Username == korIme && k.Lozinka == password select k).SingleOrDefault<Korisnik>();
                     OibKorisnika = upit.OIB;
                   
+                    // ili samo prije if (upit.Status==0) onda moze dalje, ako ne onda je false
                     if(upit.Lozinka==password)
                     {
                         Validacija = true;
@@ -110,9 +111,6 @@ namespace eNarudžba.Forme
                             
 
                         }
-                        
-                       
-                        
                         return true;
                     }
 

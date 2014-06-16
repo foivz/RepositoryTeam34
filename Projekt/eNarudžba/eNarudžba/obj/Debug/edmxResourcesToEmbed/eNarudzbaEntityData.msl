@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="T34_DBModelStoreContainer" CdmEntityContainer="T34_DBEntities3">
+  <EntityContainerMapping StorageEntityContainer="T34_DBModelStoreContainer" CdmEntityContainer="T34_DBEntities2">
     <EntitySetMapping Name="Hrana">
       <EntityTypeMapping TypeName="T34_DBModel.Hrana">
         <MappingFragment StoreEntitySet="Hrana">
@@ -91,21 +91,6 @@
         <MappingFragment StoreEntitySet="Placanje">
           <ScalarProperty Name="IDplacanje" ColumnName="IDplacanje" />
           <ScalarProperty Name="NacinPlacanja" ColumnName="NacinPlacanja" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PrivremenaTablica">
-      <EntityTypeMapping TypeName="T34_DBModel.PrivremenaTablica">
-        <MappingFragment StoreEntitySet="PrivremenaTablica">
-          <ScalarProperty Name="IDprivremenaTablica" ColumnName="IDprivremenaTablica" />
-          <ScalarProperty Name="IDnarudzbaH" ColumnName="IDnarudzbaH" />
-          <ScalarProperty Name="IDnarudzbaP" ColumnName="IDnarudzbaP" />
-          <ScalarProperty Name="NazivHrana" ColumnName="NazivHrana" />
-          <ScalarProperty Name="NazivPice" ColumnName="NazivPice" />
-          <ScalarProperty Name="CijenaHrana" ColumnName="CijenaHrana" />
-          <ScalarProperty Name="CijenaPice" ColumnName="CijenaPice" />
-          <ScalarProperty Name="Opis" ColumnName="Opis" />
-          <ScalarProperty Name="Kolicina" ColumnName="Kolicina" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

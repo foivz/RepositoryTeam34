@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8dca3a4ceff24d468bd4c4d1320751e4" Name="Diagram1">
+      <Diagram DiagramId="f451771e558445e5956b9764c449bf10" Name="Diagram1">
         <EntityTypeShape EntityType="T34_DBModel.Hrana" Width="1.5" PointX="5.25" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.HranaSastojci" Width="1.5" PointX="7.5" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.Korisnik" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
@@ -14,10 +14,9 @@
         <EntityTypeShape EntityType="T34_DBModel.NarudzbaStatus" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.Pice" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.Placanje" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="T34_DBModel.PrivremenaTablica" Width="2.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.Sastojci" Width="1.5" PointX="5.25" PointY="14.875" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.Status" Width="1.5" PointX="5.25" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="T34_DBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="T34_DBModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.TipKorisnika" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="T34_DBModel.VelicinaHrane" Width="1.5" PointX="3" PointY="9" IsExpanded="true" />
         <AssociationConnector Association="T34_DBModel.FK_Hrana_VelicinaHrane" ManuallyRouted="false" />

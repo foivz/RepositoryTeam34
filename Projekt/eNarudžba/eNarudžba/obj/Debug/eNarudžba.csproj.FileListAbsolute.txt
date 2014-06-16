@@ -17,23 +17,6 @@ C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.GlavnaFormaDjelatnik.resources
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PovijestNarudzbi.resources
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PonudaJelovnika.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\eNarudžba.exe.config
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.exe
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.pdb
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\eNarudžba.exe
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\eNarudžba.pdb
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\EntityFramework.dll
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\EntityFramework.xml
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.csprojResolveAssemblyReference.cache
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.GlavnaFormaDjelatnik.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.GlavnaFormaNarucitelj.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PonudaJelovnika.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PovijestNarudzbi.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PrijavaForma.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.RegistracijaForma.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.PocetnaForma.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Properties.Resources.resources
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.csproj.GenerateResource.Cache
-C:\Users\Valentina\Desktop\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PotvrdaNarudzbe.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PracenjeStanja.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.ZaprimljeneNarudzbe.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PromjenaStatusa.resources

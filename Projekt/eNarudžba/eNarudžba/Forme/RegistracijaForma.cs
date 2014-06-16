@@ -67,7 +67,7 @@ namespace eNarudžba.Forme
                     radbtn = true;
                 }
                 //mora ici u else
-                using (var db = new T34_DBEntities3()) 
+                using (var db = new T34_DBEntities2()) 
                 {      
                         Korisnik korisnik = new Korisnik
                         {
@@ -209,7 +209,7 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities3()) 
+                    using (var db = new T34_DBEntities2()) 
                     {
                         Int64 provjeraOib = Int64.Parse(txtBoxOIB.Text);
                         var upitOIB = (from k in db.Korisnik where k.OIB == provjeraOib select k ).FirstOrDefault<Korisnik>();
@@ -254,7 +254,7 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities3())
+                    using (var db = new T34_DBEntities2())
                     {
                         
                         var upitKorIme = (from k in db.Korisnik where k.Username == txtBoxRegKorIme.Text select k).FirstOrDefault<Korisnik>();
@@ -357,7 +357,7 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities3())
+                    using (var db = new T34_DBEntities2())
                     {
                        
                         var upitEmail = (from k in db.Korisnik where k.Email == txtBoxEmail.Text select k ).FirstOrDefault<Korisnik>();

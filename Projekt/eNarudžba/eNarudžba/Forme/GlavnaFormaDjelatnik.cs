@@ -16,5 +16,11 @@ namespace eNarudžba.Forme
         {
             InitializeComponent();
         }
+
+        private void btnPregledZaprimljenihNarudzbi_Click(object sender, EventArgs e)
+        {
+            ZaprimljeneNarudzbe zaprimljeneNarudzbe = new ZaprimljeneNarudzbe();
+            zaprimljeneNarudzbe.Show();
+        }
     }
 }

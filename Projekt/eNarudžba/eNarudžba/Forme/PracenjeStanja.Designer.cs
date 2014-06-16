@@ -1,6 +1,6 @@
 ﻿namespace eNarudžba.Forme
 {
-    partial class PonudaJelovnika
+    partial class PracenjeStanja
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvPonudaJelovnika = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPonudaJelovnika)).BeginInit();
+            this.dgvPracenjeStanja = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPracenjeStanja)).BeginInit();
             this.SuspendLayout();
             // 
-            // dgvPonudaJelovnika
+            // dgvPracenjeStanja
             // 
-            this.dgvPonudaJelovnika.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPonudaJelovnika.Location = new System.Drawing.Point(41, 67);
-            this.dgvPonudaJelovnika.Name = "dgvPonudaJelovnika";
-            this.dgvPonudaJelovnika.Size = new System.Drawing.Size(220, 160);
-            this.dgvPonudaJelovnika.TabIndex = 0;
+            this.dgvPracenjeStanja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPracenjeStanja.Location = new System.Drawing.Point(12, 12);
+            this.dgvPracenjeStanja.Name = "dgvPracenjeStanja";
+            this.dgvPracenjeStanja.Size = new System.Drawing.Size(430, 237);
+            this.dgvPracenjeStanja.TabIndex = 0;
             // 
-            // PonudaJelovnika
+            // PracenjeStanja
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.dgvPonudaJelovnika);
-            this.Name = "PonudaJelovnika";
-            this.Text = "PonudaJelovnika";
-            this.Load += new System.EventHandler(this.PonudaJelovnika_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPonudaJelovnika)).EndInit();
+            this.ClientSize = new System.Drawing.Size(454, 261);
+            this.Controls.Add(this.dgvPracenjeStanja);
+            this.Name = "PracenjeStanja";
+            this.Text = "PracenjeStanja";
+            this.Load += new System.EventHandler(this.PracenjeStanja_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPracenjeStanja)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgvPonudaJelovnika;
+        private System.Windows.Forms.DataGridView dgvPracenjeStanja;
     }
 }

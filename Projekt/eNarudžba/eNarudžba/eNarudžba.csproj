@@ -41,7 +41,6 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -87,17 +86,17 @@
     <Compile Include="Forme\PonudaJelovnika.Designer.cs">
       <DependentUpon>PonudaJelovnika.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forme\PotvrdaNarudzbe.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forme\PotvrdaNarudzbe.Designer.cs">
-      <DependentUpon>PotvrdaNarudzbe.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forme\PovijestNarudzbi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\PovijestNarudzbi.Designer.cs">
       <DependentUpon>PovijestNarudzbi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\PracenjeStanja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PracenjeStanja.Designer.cs">
+      <DependentUpon>PracenjeStanja.cs</DependentUpon>
     </Compile>
     <Compile Include="Forme\PrijavaForma.cs">
       <SubType>Form</SubType>
@@ -105,11 +104,23 @@
     <Compile Include="Forme\PrijavaForma.Designer.cs">
       <DependentUpon>PrijavaForma.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\PromjenaStatusa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PromjenaStatusa.Designer.cs">
+      <DependentUpon>PromjenaStatusa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\RegistracijaForma.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forme\RegistracijaForma.Designer.cs">
       <DependentUpon>RegistracijaForma.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\ZaprimljeneNarudzbe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\ZaprimljeneNarudzbe.Designer.cs">
+      <DependentUpon>ZaprimljeneNarudzbe.cs</DependentUpon>
     </Compile>
     <Compile Include="Hrana.cs">
       <DependentUpon>eNarudzbaEntityData.tt</DependentUpon>
@@ -144,9 +155,6 @@
     <Compile Include="PocetnaForma.Designer.cs">
       <DependentUpon>PocetnaForma.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrivremenaTablica.cs">
-      <DependentUpon>eNarudzbaEntityData.tt</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sastojci.cs">
@@ -173,17 +181,23 @@
     <EmbeddedResource Include="Forme\PonudaJelovnika.resx">
       <DependentUpon>PonudaJelovnika.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forme\PotvrdaNarudzbe.resx">
-      <DependentUpon>PotvrdaNarudzbe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forme\PovijestNarudzbi.resx">
       <DependentUpon>PovijestNarudzbi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PracenjeStanja.resx">
+      <DependentUpon>PracenjeStanja.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\PrijavaForma.resx">
       <DependentUpon>PrijavaForma.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PromjenaStatusa.resx">
+      <DependentUpon>PromjenaStatusa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forme\RegistracijaForma.resx">
       <DependentUpon>RegistracijaForma.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\ZaprimljeneNarudzbe.resx">
+      <DependentUpon>ZaprimljeneNarudzbe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PocetnaForma.resx">
       <DependentUpon>PocetnaForma.cs</DependentUpon>

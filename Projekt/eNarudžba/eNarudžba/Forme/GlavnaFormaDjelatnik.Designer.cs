@@ -40,6 +40,7 @@
             this.btnPregledZaprimljenihNarudzbi.TabIndex = 0;
             this.btnPregledZaprimljenihNarudzbi.Text = "Pregled zaprimljenih narudžbi";
             this.btnPregledZaprimljenihNarudzbi.UseVisualStyleBackColor = true;
+            this.btnPregledZaprimljenihNarudzbi.Click += new System.EventHandler(this.btnPregledZaprimljenihNarudzbi_Click);
             // 
             // btnUpravljanjeKorisnikom
             // 
