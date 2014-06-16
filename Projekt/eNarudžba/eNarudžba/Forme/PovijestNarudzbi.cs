@@ -31,7 +31,7 @@ namespace eNarudžba.Forme
         }
         private void PrikaziPovijestNarudzbi()
         {
-            using (T34_DBEntities1 db = new T34_DBEntities1())
+            using (T34_DBEntities3 db = new T34_DBEntities3())
             {
 
               /*  var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB where n.IDnarucitelj == oibKorisnika select new { n, nh, h, k }).ToList();
@@ -60,7 +60,7 @@ namespace eNarudžba.Forme
 
         private void PrikaziDetaljeNarudzbe() 
         {
-            using (T34_DBEntities1 db = new T34_DBEntities1())
+            using (T34_DBEntities3 db = new T34_DBEntities3())
             {
 
               

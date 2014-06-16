@@ -90,8 +90,8 @@ namespace eNarudžba.Forme
         {
             try
             {
-                
-                using (T34_DBEntities1 db=new T34_DBEntities1())
+
+                using (T34_DBEntities3 db = new T34_DBEntities3())
                 {
                     var upit = (from k in db.Korisnik where k.Username == korIme && k.Lozinka == password select k).SingleOrDefault<Korisnik>();
                     OibKorisnika = upit.OIB;
