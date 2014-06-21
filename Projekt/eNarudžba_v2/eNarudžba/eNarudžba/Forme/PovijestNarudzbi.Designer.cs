@@ -28,18 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PovijestNarudzbi));
             this.btnPracenjeStanjaNarudzbe = new System.Windows.Forms.Button();
             this.dgwPovijestNarudzbi = new System.Windows.Forms.DataGridView();
             this.dgwPovijestNarudzbiDetalji = new System.Windows.Forms.DataGridView();
-            this.btnPonovnoNarucivanje = new System.Windows.Forms.Button();
             this.btnKomentiranje = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPovijestNarudzbi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPovijestNarudzbiDetalji)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPracenjeStanjaNarudzbe
             // 
-            this.btnPracenjeStanjaNarudzbe.Location = new System.Drawing.Point(10, 358);
+            this.btnPracenjeStanjaNarudzbe.Location = new System.Drawing.Point(382, 232);
             this.btnPracenjeStanjaNarudzbe.Name = "btnPracenjeStanjaNarudzbe";
             this.btnPracenjeStanjaNarudzbe.Size = new System.Drawing.Size(132, 23);
             this.btnPracenjeStanjaNarudzbe.TabIndex = 1;
@@ -49,60 +53,104 @@
             // 
             // dgwPovijestNarudzbi
             // 
+            this.dgwPovijestNarudzbi.AllowUserToAddRows = false;
+            this.dgwPovijestNarudzbi.AllowUserToDeleteRows = false;
+            this.dgwPovijestNarudzbi.AllowUserToResizeColumns = false;
+            this.dgwPovijestNarudzbi.AllowUserToResizeRows = false;
+            this.dgwPovijestNarudzbi.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgwPovijestNarudzbi.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgwPovijestNarudzbi.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPovijestNarudzbi.Location = new System.Drawing.Point(14, 10);
+            this.dgwPovijestNarudzbi.GridColor = System.Drawing.SystemColors.Window;
+            this.dgwPovijestNarudzbi.Location = new System.Drawing.Point(15, 59);
             this.dgwPovijestNarudzbi.Name = "dgwPovijestNarudzbi";
-            this.dgwPovijestNarudzbi.Size = new System.Drawing.Size(426, 129);
+            this.dgwPovijestNarudzbi.ReadOnly = true;
+            this.dgwPovijestNarudzbi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwPovijestNarudzbi.Size = new System.Drawing.Size(499, 167);
             this.dgwPovijestNarudzbi.TabIndex = 4;
-            this.dgwPovijestNarudzbi.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwPovijestNarudzbi_RowHeaderMouseClick);
+            this.dgwPovijestNarudzbi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwPovijestNarudzbi_CellClick);
             // 
             // dgwPovijestNarudzbiDetalji
             // 
+            this.dgwPovijestNarudzbiDetalji.AllowUserToAddRows = false;
+            this.dgwPovijestNarudzbiDetalji.AllowUserToDeleteRows = false;
+            this.dgwPovijestNarudzbiDetalji.AllowUserToResizeColumns = false;
+            this.dgwPovijestNarudzbiDetalji.AllowUserToResizeRows = false;
             this.dgwPovijestNarudzbiDetalji.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgwPovijestNarudzbiDetalji.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dgwPovijestNarudzbiDetalji.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgwPovijestNarudzbiDetalji.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgwPovijestNarudzbiDetalji.Location = new System.Drawing.Point(12, 145);
+            this.dgwPovijestNarudzbiDetalji.GridColor = System.Drawing.SystemColors.Window;
+            this.dgwPovijestNarudzbiDetalji.Location = new System.Drawing.Point(15, 272);
             this.dgwPovijestNarudzbiDetalji.Name = "dgwPovijestNarudzbiDetalji";
-            this.dgwPovijestNarudzbiDetalji.Size = new System.Drawing.Size(426, 207);
+            this.dgwPovijestNarudzbiDetalji.ReadOnly = true;
+            this.dgwPovijestNarudzbiDetalji.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwPovijestNarudzbiDetalji.Size = new System.Drawing.Size(499, 169);
             this.dgwPovijestNarudzbiDetalji.TabIndex = 5;
-            this.dgwPovijestNarudzbiDetalji.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgwPovijestNarudzbiDetalji_RowHeaderMouseClick);
-            // 
-            // btnPonovnoNarucivanje
-            // 
-            this.btnPonovnoNarucivanje.Location = new System.Drawing.Point(308, 358);
-            this.btnPonovnoNarucivanje.Name = "btnPonovnoNarucivanje";
-            this.btnPonovnoNarucivanje.Size = new System.Drawing.Size(130, 23);
-            this.btnPonovnoNarucivanje.TabIndex = 3;
-            this.btnPonovnoNarucivanje.Text = "Ponovno naručivanje";
-            this.btnPonovnoNarucivanje.UseVisualStyleBackColor = true;
+            this.dgwPovijestNarudzbiDetalji.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwPovijestNarudzbiDetalji_CellClick);
             // 
             // btnKomentiranje
             // 
-            this.btnKomentiranje.Location = new System.Drawing.Point(161, 358);
+            this.btnKomentiranje.Location = new System.Drawing.Point(382, 448);
             this.btnKomentiranje.Name = "btnKomentiranje";
-            this.btnKomentiranje.Size = new System.Drawing.Size(130, 23);
+            this.btnKomentiranje.Size = new System.Drawing.Size(132, 23);
             this.btnKomentiranje.TabIndex = 2;
             this.btnKomentiranje.Text = "Komentiranje hrane";
             this.btnKomentiranje.UseVisualStyleBackColor = true;
             this.btnKomentiranje.Click += new System.EventHandler(this.btnKomentiranje_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 257);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Detalji narudžbe";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(15, 40);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Povijest narudžbi";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(5, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // PovijestNarudzbi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 391);
+            this.ClientSize = new System.Drawing.Size(531, 479);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dgwPovijestNarudzbiDetalji);
             this.Controls.Add(this.dgwPovijestNarudzbi);
-            this.Controls.Add(this.btnPonovnoNarucivanje);
             this.Controls.Add(this.btnKomentiranje);
             this.Controls.Add(this.btnPracenjeStanjaNarudzbe);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "PovijestNarudzbi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "PovijestNarudzbi";
+            this.Text = "eNarudžba";
             this.Load += new System.EventHandler(this.PovijestNarudzbi_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgwPovijestNarudzbi)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPovijestNarudzbiDetalji)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -111,8 +159,10 @@
         private System.Windows.Forms.Button btnPracenjeStanjaNarudzbe;
         private System.Windows.Forms.DataGridView dgwPovijestNarudzbi;
         private System.Windows.Forms.DataGridView dgwPovijestNarudzbiDetalji;
-        private System.Windows.Forms.Button btnPonovnoNarucivanje;
         private System.Windows.Forms.Button btnKomentiranje;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.PictureBox pictureBox1;
 
 
 

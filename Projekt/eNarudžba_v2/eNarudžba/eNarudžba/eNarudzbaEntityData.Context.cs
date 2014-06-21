@@ -13,10 +13,10 @@ namespace eNarudžba
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class T34_DBEntities5 : DbContext
+    public partial class T34_DBEntities6 : DbContext
     {
-        public T34_DBEntities5()
-            : base("name=T34_DBEntities5")
+        public T34_DBEntities6()
+            : base("name=T34_DBEntities6")
         {
         }
     

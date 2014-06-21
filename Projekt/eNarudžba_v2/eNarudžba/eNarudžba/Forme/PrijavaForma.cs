@@ -17,7 +17,7 @@ namespace eNarudžba.Forme
         private string lozinka="";
         private int tipKorisnika;
         private Int64 oibKorisnika;
-        
+        PocetnaForma pocetna;
 
         public bool Validacija { get { return validacija; } set { validacija = value; } }
         public string KorisnickoIme { get { return korisnickoIme; } set { korisnickoIme = value; } }
@@ -26,9 +26,10 @@ namespace eNarudžba.Forme
 
         public Int64 OibKorisnika { get { return oibKorisnika; } set { oibKorisnika = value; } }
 
-        public PrijavaForma()
+        public PrijavaForma(PocetnaForma forma)
         {
             InitializeComponent();
+            pocetna = forma;
         }
 
 
@@ -91,7 +92,7 @@ namespace eNarudžba.Forme
             try
             {
 
-                using (T34_DBEntities5 db = new T34_DBEntities5())
+                using (T34_DBEntities6 db = new T34_DBEntities6())
                 {                                                                   //makni loz==pass    //&& status!=1
                     var upit = (from k in db.Korisnik where k.Username == korIme && k.Lozinka == password select k).SingleOrDefault<Korisnik>();
                     OibKorisnika = upit.OIB;
@@ -127,6 +128,55 @@ namespace eNarudžba.Forme
             Validacija = false;
             return false;
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            RegistracijaForma registracija = new RegistracijaForma(pocetna);
+            registracija.Show();
+            this.Close();
+
+        }
+
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            pocetna.WindowState = FormWindowState.Normal;
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+        private Point mouse_offset;
+
+        private void PrijavaForma_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void PrijavaForma_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos; //move the form to the desired location
+            }
+        }
+
+
+
+
+
+
 
 
     }

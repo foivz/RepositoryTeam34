@@ -21,12 +21,43 @@ namespace eNarudžba.Forme
         {
             ZaprimljeneNarudzbe zaprimljeneNarudzbe = new ZaprimljeneNarudzbe();
             zaprimljeneNarudzbe.Show();
+            this.Close();
         }
 
         private void btnUpravljanjeKorisnikom_Click(object sender, EventArgs e)
         {
             UpravljanjeKorisnikom upravljanjeKorisnikom = new UpravljanjeKorisnikom();
             upravljanjeKorisnikom.Show();
+            this.Close();
         }
+
+        private Point mouse_offset;
+
+        private void GlavnaFormaDjelatnik_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void GlavnaFormaDjelatnik_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

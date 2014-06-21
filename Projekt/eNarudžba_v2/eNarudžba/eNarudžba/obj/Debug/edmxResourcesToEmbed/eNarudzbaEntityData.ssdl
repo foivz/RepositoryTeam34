@@ -54,7 +54,6 @@
     </Key>
     <Property Name="IDnarudzba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="DatumVrijemeZaprimanja" Type="datetime" Nullable="false" />
-    <Property Name="CijenaNarudzbe" Type="money" Nullable="false" />
     <Property Name="IDnarucitelj" Type="bigint" Nullable="false" />
     <Property Name="Zavrseno" Type="int" Nullable="false" />
   </EntityType>

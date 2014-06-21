@@ -59,7 +59,6 @@
           </Key>
           <Property Name="IDnarudzba" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DatumVrijemeZaprimanja" Type="datetime" Nullable="false" />
-          <Property Name="CijenaNarudzbe" Type="money" Nullable="false" />
           <Property Name="IDnarucitelj" Type="bigint" Nullable="false" />
           <Property Name="Zavrseno" Type="int" Nullable="false" />
         </EntityType>
@@ -422,7 +421,6 @@
           </Key>
           <Property Name="IDnarudzba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DatumVrijemeZaprimanja" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CijenaNarudzbe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="IDnarucitelj" Type="Int64" Nullable="false" />
           <Property Name="Zavrseno" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Korisnik" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Narudzba" ToRole="Korisnik" />
@@ -665,7 +663,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="T34_DBEntities5" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="T34_DBEntities6" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Hrana" EntityType="Self.Hrana" />
           <EntitySet Name="HranaSastojci" EntityType="Self.HranaSastojci" />
           <EntitySet Name="komentariHrana" EntityType="Self.komentariHrana" />
@@ -733,7 +731,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="T34_DBModelStoreContainer" CdmEntityContainer="T34_DBEntities5">
+        <EntityContainerMapping StorageEntityContainer="T34_DBModelStoreContainer" CdmEntityContainer="T34_DBEntities6">
           <EntitySetMapping Name="Hrana">
             <EntityTypeMapping TypeName="T34_DBModel.Hrana">
               <MappingFragment StoreEntitySet="Hrana">
@@ -792,7 +790,6 @@
               <MappingFragment StoreEntitySet="Narudzba">
                 <ScalarProperty Name="IDnarudzba" ColumnName="IDnarudzba" />
                 <ScalarProperty Name="DatumVrijemeZaprimanja" ColumnName="DatumVrijemeZaprimanja" />
-                <ScalarProperty Name="CijenaNarudzbe" ColumnName="CijenaNarudzbe" />
                 <ScalarProperty Name="IDnarucitelj" ColumnName="IDnarucitelj" />
                 <ScalarProperty Name="Zavrseno" ColumnName="Zavrseno" />
               </MappingFragment>

@@ -31,6 +31,7 @@ namespace eNarudžba.Forme
         private string email = "";
         private string adresa = "";
         private bool student;
+        PocetnaForma pocetna;
 
         public bool Validacija { get { return validacija; } set { validacija = value; } }
         public bool ProvjeraIme { get { return  provjeraIme; } set { provjeraIme = value; } }
@@ -52,9 +53,10 @@ namespace eNarudžba.Forme
         public bool Student { get { return student; } set { student = value; } }
 
 
-        public RegistracijaForma()
+        public RegistracijaForma(PocetnaForma forma)
         {
             InitializeComponent();
+            pocetna = forma;
         }
         private void Registracija() 
         {
@@ -67,7 +69,7 @@ namespace eNarudžba.Forme
                     radbtn = true;
                 }
                 //mora ici u else
-                using (var db = new T34_DBEntities5()) 
+                using (var db = new T34_DBEntities6()) 
                 {      
                         Korisnik korisnik = new Korisnik
                         {
@@ -209,7 +211,7 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities5()) 
+                    using (var db = new T34_DBEntities6()) 
                     {
                         Int64 provjeraOib = Int64.Parse(txtBoxOIB.Text);
                         var upitOIB = (from k in db.Korisnik where k.OIB == provjeraOib select k ).FirstOrDefault<Korisnik>();
@@ -254,7 +256,7 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities5())
+                    using (var db = new T34_DBEntities6())
                     {
                         
                         var upitKorIme = (from k in db.Korisnik where k.Username == txtBoxRegKorIme.Text select k).FirstOrDefault<Korisnik>();
@@ -357,7 +359,7 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities5())
+                    using (var db = new T34_DBEntities6())
                     {
                        
                         var upitEmail = (from k in db.Korisnik where k.Email == txtBoxEmail.Text select k ).FirstOrDefault<Korisnik>();
@@ -397,6 +399,40 @@ namespace eNarudžba.Forme
                 ProvjeraAdresa = true;
             }
             
-        }   
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            pocetna.WindowState = FormWindowState.Normal;
+            this.Close();
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private Point mouse_offset;
+        private void RegistracijaForma_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void RegistracijaForma_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos; 
+            }
+        }
+
+ 
     }
 }

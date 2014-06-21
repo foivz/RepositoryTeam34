@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="T34_DBModelStoreContainer" CdmEntityContainer="T34_DBEntities5">
+  <EntityContainerMapping StorageEntityContainer="T34_DBModelStoreContainer" CdmEntityContainer="T34_DBEntities6">
     <EntitySetMapping Name="Hrana">
       <EntityTypeMapping TypeName="T34_DBModel.Hrana">
         <MappingFragment StoreEntitySet="Hrana">
@@ -59,7 +59,6 @@
         <MappingFragment StoreEntitySet="Narudzba">
           <ScalarProperty Name="IDnarudzba" ColumnName="IDnarudzba" />
           <ScalarProperty Name="DatumVrijemeZaprimanja" ColumnName="DatumVrijemeZaprimanja" />
-          <ScalarProperty Name="CijenaNarudzbe" ColumnName="CijenaNarudzbe" />
           <ScalarProperty Name="IDnarucitelj" ColumnName="IDnarucitelj" />
           <ScalarProperty Name="Zavrseno" ColumnName="Zavrseno" />
         </MappingFragment>

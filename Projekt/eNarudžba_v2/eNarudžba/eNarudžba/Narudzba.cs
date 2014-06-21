@@ -22,7 +22,6 @@ namespace eNarudžba
     
         public int IDnarudzba { get; set; }
         public System.DateTime DatumVrijemeZaprimanja { get; set; }
-        public decimal CijenaNarudzbe { get; set; }
         public long IDnarucitelj { get; set; }
         public int Zavrseno { get; set; }
     

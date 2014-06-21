@@ -64,7 +64,6 @@
     </Key>
     <Property Name="IDnarudzba" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="DatumVrijemeZaprimanja" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="CijenaNarudzbe" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="IDnarucitelj" Type="Int64" Nullable="false" />
     <Property Name="Zavrseno" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Korisnik" Relationship="Self.FK_Narudzba_Korisnik" FromRole="Narudzba" ToRole="Korisnik" />
@@ -307,7 +306,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="T34_DBEntities5" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="T34_DBEntities6" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Hrana" EntityType="Self.Hrana" />
     <EntitySet Name="HranaSastojci" EntityType="Self.HranaSastojci" />
     <EntitySet Name="komentariHrana" EntityType="Self.komentariHrana" />

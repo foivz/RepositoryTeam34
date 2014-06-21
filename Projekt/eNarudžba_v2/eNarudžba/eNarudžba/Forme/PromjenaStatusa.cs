@@ -20,7 +20,7 @@ namespace eNarudžba.Forme
         }
         public void PrikaziStatuse()
         {
-            using (var db = new T34_DBEntities5())
+            using (var db = new T34_DBEntities6())
             {
                 
                 var upit = (from n in db.Narudzba join ns in db.NarudzbaStatus on n.IDnarudzba equals ns.IDnarudzba join s in db.Status on ns.IDstatus equals s.IDstatus where n.IDnarudzba == idNarudzbe select s.IDstatus).ToList();
@@ -54,7 +54,7 @@ namespace eNarudžba.Forme
 
         public void PromijeniStatus()
         {
-            using (var db = new T34_DBEntities5())
+            using (var db = new T34_DBEntities6())
             {
                 if (rdbNarudzbaZaprimljena.Checked == true)
                 {
@@ -113,7 +113,7 @@ namespace eNarudžba.Forme
                     db.SaveChanges();
 
                     Narudzba narudzba;
-                    using (var dbS = new T34_DBEntities5())
+                    using (var dbS = new T34_DBEntities6())
                     {
                         narudzba = dbS.Narudzba.Where(n => n.IDnarudzba == idNarudzbe).FirstOrDefault<Narudzba>();
                     }
@@ -121,7 +121,7 @@ namespace eNarudžba.Forme
                     {
                         narudzba.Zavrseno = 1;
                     }
-                    using (var dbU = new T34_DBEntities5())
+                    using (var dbU = new T34_DBEntities6())
                     {
 
                         dbU.Entry(narudzba).State = System.Data.Entity.EntityState.Modified;
