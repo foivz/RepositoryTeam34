@@ -106,6 +106,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "KomentiranjeHrane";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "eNarudžba";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.KomentiranjeHrane_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.KomentiranjeHrane_MouseMove);

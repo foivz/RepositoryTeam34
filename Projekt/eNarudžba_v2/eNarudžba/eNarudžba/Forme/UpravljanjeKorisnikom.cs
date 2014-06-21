@@ -15,10 +15,13 @@ namespace eNarudžba.Forme
     {
         private Int64 idPasivni;
         private Int64 idAktivni;
+        private bool provjeraP = false;
+        private bool provjeraA = false;
 
         public Int64 IdPasivni { get { return idPasivni; } set { idPasivni = value; } }
-
         public Int64 IdAktivni { get { return idAktivni; } set { idAktivni = value; } }
+        public bool ProvjeraA { get { return provjeraA; } set { provjeraA = value; } }
+        public bool ProvjeraP { get { return provjeraP; } set { provjeraP = value; } }
         public UpravljanjeKorisnikom()
         {
             InitializeComponent();
@@ -56,59 +59,92 @@ namespace eNarudžba.Forme
         }
 
 
+        private void dgvPasivni_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Int32 selektiraniRed = dgvPasivni.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selektiraniRed > 0)
+            {
+                IdPasivni = Int64.Parse(dgvPasivni.SelectedCells[0].Value.ToString());
+                ProvjeraP = true;
+            }
+        }
+
+        private void dgvAktivni_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Int32 selektiraniRed2 = dgvAktivni.Rows.GetRowCount(DataGridViewElementStates.Selected);
+            if (selektiraniRed2 > 0)
+            {
+                IdAktivni = Int64.Parse(dgvAktivni.SelectedCells[0].Value.ToString());
+                ProvjeraA = true;
+            }
+        }
+
         private void Aktiviraj()
         {
-            Korisnik korisnik;
-            using (var dbSA = new T34_DBEntities6())
+            if (ProvjeraP)
             {
-                korisnik = dbSA.Korisnik.Where(k => k.OIB == IdPasivni).FirstOrDefault<Korisnik>();
-            }
-            if (korisnik!=null) 
-            {
-                korisnik.status = 0;
-            }
-            using (var dbUA = new T34_DBEntities6())
-            {
+                Korisnik korisnik;
+                using (var dbSA = new T34_DBEntities6())
+                {
+                    korisnik = dbSA.Korisnik.Where(k => k.OIB == IdPasivni).FirstOrDefault<Korisnik>();
+                }
+                if (korisnik != null)
+                {
+                    korisnik.status = 0;
+                }
+                using (var dbUA = new T34_DBEntities6())
+                {
 
-                dbUA.Entry(korisnik).State = System.Data.Entity.EntityState.Modified;
-                dbUA.SaveChanges();
+                    dbUA.Entry(korisnik).State = System.Data.Entity.EntityState.Modified;
+                    dbUA.SaveChanges();
+                }
             }
+            else
+            {
+                PorukeUpravljanje upozorenje = new PorukeUpravljanje();
+                upozorenje.ShowDialog();
+            }
+
         }
 
         private void btnAktiviraj_Click(object sender, EventArgs e)
         {
             Aktiviraj();
-          /*   dgvAktivni.Refresh();
-            dgvPasivni.Refresh();
-            this.Refresh(); */
             UpravljanjeKorisnikom_Load(this,null);
         }
 
         private void Deaktiviraj() 
         {
-            Korisnik korisnik2;
-            using (var dbSD = new T34_DBEntities6())
+            if (ProvjeraA)
             {
-                korisnik2 = dbSD.Korisnik.Where(k => k.OIB == IdAktivni).FirstOrDefault<Korisnik>();
-            }
-            if (korisnik2 != null)
-            {
-                korisnik2.status = 1;
-            }
-            using (var dbUD = new T34_DBEntities6())
-            {
+                Korisnik korisnik2;
+                using (var dbSD = new T34_DBEntities6())
+                {
+                    korisnik2 = dbSD.Korisnik.Where(k => k.OIB == IdAktivni).FirstOrDefault<Korisnik>();
+                }
+                if (korisnik2 != null)
+                {
+                    korisnik2.status = 1;
+                }
+                using (var dbUD = new T34_DBEntities6())
+                {
 
-                dbUD.Entry(korisnik2).State = System.Data.Entity.EntityState.Modified;
-                dbUD.SaveChanges();
+                    dbUD.Entry(korisnik2).State = System.Data.Entity.EntityState.Modified;
+                    dbUD.SaveChanges();
+                }
             }
+            else
+            {
+                PorukeUpravljanje upozorenje2 = new PorukeUpravljanje();
+                upozorenje2.ShowDialog();
+            }
+
         }
+
 
         private void btnBlokiraj_Click(object sender, EventArgs e)
         {
             Deaktiviraj();
-           /* dgvAktivni.Refresh();
-            dgvPasivni.Refresh();
-            this.Refresh(); */
             UpravljanjeKorisnikom_Load(this, null);
         }
 
@@ -119,35 +155,32 @@ namespace eNarudžba.Forme
             this.Close();
         }
 
-        private void dgvPasivni_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void pictureBox2_Click(object sender, EventArgs e)
         {
-            Int32 selektiraniRed = dgvPasivni.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if (selektiraniRed > 0)
-            {
+            this.WindowState = FormWindowState.Minimized;
+        }
 
-                IdPasivni = Int64.Parse(dgvPasivni.SelectedCells[0].Value.ToString());
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-            }
-            else
+        private Point mouse_offset;
+
+        private void UpravljanjeKorisnikom_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void UpravljanjeKorisnikom_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
-                MessageBox.Show("Nije odabran red");
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos;
             }
         }
 
-        private void dgvAktivni_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Int32 selektiraniRed2 = dgvAktivni.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if (selektiraniRed2 > 0)
-            {
-
-                IdAktivni = Int64.Parse(dgvAktivni.SelectedCells[0].Value.ToString());
-
-            }
-            else
-            {
-                MessageBox.Show("Nije odabran red");
-            }
-        }
-        
     }
 }

@@ -22,3 +22,9 @@ C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PromjenaStatusa.resources
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.KomentiranjeHrane.resources
 C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.UpravljanjeKorisnikom.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.poruke.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PorukeRegistracija.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PorukePonuda.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PorukeKomentiranje.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PorukeStatus.resources
+C:\Users\Matija\Documents\Visual Studio 2013\Projects\eNarudžba\eNarudžba\obj\Debug\eNarudžba.Forme.PorukeUpravljanje.resources

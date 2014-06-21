@@ -36,14 +36,20 @@
             this.btnAktiviraj = new System.Windows.Forms.Button();
             this.btnBlokiraj = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasivni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(36, 44);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(82, 13);
@@ -53,6 +59,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(36, 246);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(80, 13);
@@ -76,7 +84,7 @@
             this.dgvPasivni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPasivni.Size = new System.Drawing.Size(337, 150);
             this.dgvPasivni.TabIndex = 2;
-            this.dgvPasivni.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPasivni_CellClick);
+            this.dgvPasivni.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPasivni_RowHeaderMouseClick);
             // 
             // dgvAktivni
             // 
@@ -92,11 +100,12 @@
             this.dgvAktivni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvAktivni.Size = new System.Drawing.Size(337, 150);
             this.dgvAktivni.TabIndex = 3;
-            this.dgvAktivni.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAktivni_CellClick);
+            this.dgvAktivni.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAktivni_RowHeaderMouseClick);
             // 
             // btnAktiviraj
             // 
-            this.btnAktiviraj.BackColor = System.Drawing.SystemColors.Window;
+            this.btnAktiviraj.BackColor = System.Drawing.Color.White;
+            this.btnAktiviraj.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnAktiviraj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAktiviraj.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAktiviraj.Location = new System.Drawing.Point(301, 216);
@@ -109,8 +118,9 @@
             // 
             // btnBlokiraj
             // 
-            this.btnBlokiraj.BackColor = System.Drawing.SystemColors.Window;
-            this.btnBlokiraj.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnBlokiraj.BackColor = System.Drawing.Color.White;
+            this.btnBlokiraj.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnBlokiraj.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBlokiraj.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnBlokiraj.Location = new System.Drawing.Point(301, 418);
             this.btnBlokiraj.Name = "btnBlokiraj";
@@ -131,12 +141,37 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(340, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(370, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 8;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // UpravljanjeKorisnikom
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(408, 455);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnBlokiraj);
             this.Controls.Add(this.btnAktiviraj);
@@ -144,14 +179,19 @@
             this.Controls.Add(this.dgvPasivni);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "UpravljanjeKorisnikom";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "eNarudžba";
             this.Load += new System.EventHandler(this.UpravljanjeKorisnikom_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.UpravljanjeKorisnikom_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.UpravljanjeKorisnikom_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasivni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivni)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -166,5 +206,7 @@
         private System.Windows.Forms.Button btnAktiviraj;
         private System.Windows.Forms.Button btnBlokiraj;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

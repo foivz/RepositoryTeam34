@@ -13,8 +13,10 @@ namespace eNarudžba.Forme
     public partial class ZaprimljeneNarudzbe : Form
     {
         private int idNarudzbe;
+        private bool provjera = false;
 
         public int IdNarudzbe { get { return idNarudzbe; } set { idNarudzbe = value; } }
+        public bool Provjera { get { return provjera; } set { provjera = value; } }
         public ZaprimljeneNarudzbe()
         {
             InitializeComponent();
@@ -56,25 +58,21 @@ namespace eNarudžba.Forme
  
         }
 
- /*       private void dgvZaprimljeneNarudzbe_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void btnPromijenaStatusa_Click(object sender, EventArgs e)
         {
-            Int32 selektiraniRed = dgvZaprimljeneNarudzbe.Rows.GetRowCount(DataGridViewElementStates.Selected);
-            if (selektiraniRed > 0)
+            if (Provjera)
             {
-
-                IdNarudzbe = int.Parse(dgvZaprimljeneNarudzbe.SelectedCells[0].Value.ToString());
-                PrikaziZaprimljeneNarudzbeDetalji(IdNarudzbe);
+                PromjenaStatusa promjenaStatusa = new PromjenaStatusa(IdNarudzbe);
+                promjenaStatusa.Show();
             }
             else
             {
-                MessageBox.Show("Nije odabran red");
+                string naslov = "Upozorenje";
+                string poruka = "Morate odabrati narudžbu";
+                PorukeStatus upozorenje = new PorukeStatus(naslov, poruka);
+                upozorenje.ShowDialog();
             }
-        } */
-
-        private void btnPromijenaStatusa_Click(object sender, EventArgs e)
-        {
-            PromjenaStatusa promjenaStatusa = new PromjenaStatusa(IdNarudzbe);
-            promjenaStatusa.Show();
+            
         }
 
         private void dgvZaprimljeneNarudzbe_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -82,13 +80,9 @@ namespace eNarudžba.Forme
             Int32 selektiraniRed = dgvZaprimljeneNarudzbe.Rows.GetRowCount(DataGridViewElementStates.Selected);
             if (selektiraniRed > 0)
             {
-
                 IdNarudzbe = int.Parse(dgvZaprimljeneNarudzbe.SelectedCells[0].Value.ToString());
                 PrikaziZaprimljeneNarudzbeDetalji(IdNarudzbe);
-            }
-            else
-            {
-                MessageBox.Show("Nije odabran red");
+                Provjera = true;
             }
         }
 
@@ -97,6 +91,32 @@ namespace eNarudžba.Forme
             GlavnaFormaDjelatnik glavnaFormaDjelatnik = new GlavnaFormaDjelatnik();
             glavnaFormaDjelatnik.Show();
             this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private Point mouse_offset;
+        private void ZaprimljeneNarudzbe_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void ZaprimljeneNarudzbe_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos;
+            }
         }
 
 

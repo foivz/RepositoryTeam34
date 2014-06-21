@@ -39,10 +39,14 @@
             this.dgvSastojci = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPonudaJelovnika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKomentari)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSastojci)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvPonudaJelovnika
@@ -61,7 +65,8 @@
             this.dgvPonudaJelovnika.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPonudaJelovnika.Size = new System.Drawing.Size(501, 160);
             this.dgvPonudaJelovnika.TabIndex = 0;
-            this.dgvPonudaJelovnika.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonudaJelovnika_CellClick);
+//            this.dgvPonudaJelovnika.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonudaJelovnika_CellClick);
+            this.dgvPonudaJelovnika.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPonudaJelovnika_RowHeaderMouseClick);
             // 
             // label1
             // 
@@ -156,12 +161,36 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(463, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.Location = new System.Drawing.Point(494, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox3.TabIndex = 9;
+            this.pictureBox3.TabStop = false;
+            this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
             // PonudaJelovnika
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(545, 474);
+            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvSastojci);
@@ -176,10 +205,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "eNaruždba";
             this.Load += new System.EventHandler(this.PonudaJelovnika_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PonudaJelovnika_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PonudaJelovnika_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPonudaJelovnika)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKomentari)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSastojci)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,5 +228,7 @@
         private System.Windows.Forms.DataGridView dgvSastojci;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox3;
     }
 }

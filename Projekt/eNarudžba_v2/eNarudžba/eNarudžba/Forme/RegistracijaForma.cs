@@ -88,13 +88,19 @@ namespace eNarudžba.Forme
                 }
 
                 Validacija = true;
-                MessageBox.Show("Uspješno ste se registrirali");
+                string naslov = "Obavijest";
+                string poruka = "Uspješno ste se registrirali";
+                PorukeRegistracija poruke = new PorukeRegistracija(naslov, poruka);
+                poruke.ShowDialog();
                 this.Close();
             }
             else 
             {
                 Validacija = false;
-                MessageBox.Show("Niste unijeli podatke za registraciju ili krivi podaci", "Greška kod registracije");
+                string naslov2 = "Upozorenje";
+                string poruka2 = "Niste unijeli podatke za registraciju ili krivi podaci";
+                PorukeRegistracija poruke2 = new PorukeRegistracija(naslov2, poruka2);
+                poruke2.ShowDialog();
             }
         }
 

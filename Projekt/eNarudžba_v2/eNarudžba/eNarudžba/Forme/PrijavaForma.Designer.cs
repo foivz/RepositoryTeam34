@@ -49,6 +49,7 @@
             // 
             this.lblKorisnickoIme.AutoSize = true;
             this.lblKorisnickoIme.BackColor = System.Drawing.Color.Transparent;
+            this.lblKorisnickoIme.ForeColor = System.Drawing.Color.White;
             this.lblKorisnickoIme.Location = new System.Drawing.Point(76, 80);
             this.lblKorisnickoIme.Name = "lblKorisnickoIme";
             this.lblKorisnickoIme.Size = new System.Drawing.Size(75, 13);
@@ -59,6 +60,7 @@
             // 
             this.lblLozinka.AutoSize = true;
             this.lblLozinka.BackColor = System.Drawing.Color.Transparent;
+            this.lblLozinka.ForeColor = System.Drawing.Color.White;
             this.lblLozinka.Location = new System.Drawing.Point(76, 115);
             this.lblLozinka.Name = "lblLozinka";
             this.lblLozinka.Size = new System.Drawing.Size(44, 13);
@@ -97,6 +99,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(75, 214);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(87, 13);
@@ -107,6 +110,7 @@
             // 
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.linkLabel1.LinkColor = System.Drawing.Color.White;
             this.linkLabel1.Location = new System.Drawing.Point(168, 214);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(76, 13);
@@ -118,7 +122,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Location = new System.Drawing.Point(26, 39);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.Location = new System.Drawing.Point(26, 36);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(285, 218);
             this.groupBox1.TabIndex = 8;

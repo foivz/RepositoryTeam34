@@ -72,6 +72,7 @@
             // 
             this.lblIme.AutoSize = true;
             this.lblIme.BackColor = System.Drawing.Color.Transparent;
+            this.lblIme.ForeColor = System.Drawing.Color.White;
             this.lblIme.Location = new System.Drawing.Point(70, 65);
             this.lblIme.Name = "lblIme";
             this.lblIme.Size = new System.Drawing.Size(24, 13);
@@ -82,6 +83,7 @@
             // 
             this.lblPrezime.AutoSize = true;
             this.lblPrezime.BackColor = System.Drawing.Color.Transparent;
+            this.lblPrezime.ForeColor = System.Drawing.Color.White;
             this.lblPrezime.Location = new System.Drawing.Point(70, 105);
             this.lblPrezime.Name = "lblPrezime";
             this.lblPrezime.Size = new System.Drawing.Size(44, 13);
@@ -92,6 +94,7 @@
             // 
             this.lblKorisnickoIme.AutoSize = true;
             this.lblKorisnickoIme.BackColor = System.Drawing.Color.Transparent;
+            this.lblKorisnickoIme.ForeColor = System.Drawing.Color.White;
             this.lblKorisnickoIme.Location = new System.Drawing.Point(70, 185);
             this.lblKorisnickoIme.Name = "lblKorisnickoIme";
             this.lblKorisnickoIme.Size = new System.Drawing.Size(75, 13);
@@ -102,6 +105,7 @@
             // 
             this.lblLozinka.AutoSize = true;
             this.lblLozinka.BackColor = System.Drawing.Color.Transparent;
+            this.lblLozinka.ForeColor = System.Drawing.Color.White;
             this.lblLozinka.Location = new System.Drawing.Point(70, 222);
             this.lblLozinka.Name = "lblLozinka";
             this.lblLozinka.Size = new System.Drawing.Size(44, 13);
@@ -112,6 +116,7 @@
             // 
             this.lblPotvrdaLozinke.AutoSize = true;
             this.lblPotvrdaLozinke.BackColor = System.Drawing.Color.Transparent;
+            this.lblPotvrdaLozinke.ForeColor = System.Drawing.Color.White;
             this.lblPotvrdaLozinke.Location = new System.Drawing.Point(70, 262);
             this.lblPotvrdaLozinke.Name = "lblPotvrdaLozinke";
             this.lblPotvrdaLozinke.Size = new System.Drawing.Size(80, 13);
@@ -122,6 +127,7 @@
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.BackColor = System.Drawing.Color.Transparent;
+            this.lblEmail.ForeColor = System.Drawing.Color.White;
             this.lblEmail.Location = new System.Drawing.Point(70, 302);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(32, 13);
@@ -132,6 +138,7 @@
             // 
             this.lblAdresa.AutoSize = true;
             this.lblAdresa.BackColor = System.Drawing.Color.Transparent;
+            this.lblAdresa.ForeColor = System.Drawing.Color.White;
             this.lblAdresa.Location = new System.Drawing.Point(70, 343);
             this.lblAdresa.Name = "lblAdresa";
             this.lblAdresa.Size = new System.Drawing.Size(40, 13);
@@ -142,6 +149,7 @@
             // 
             this.lblStudent.AutoSize = true;
             this.lblStudent.BackColor = System.Drawing.Color.Transparent;
+            this.lblStudent.ForeColor = System.Drawing.Color.White;
             this.lblStudent.Location = new System.Drawing.Point(70, 386);
             this.lblStudent.Name = "lblStudent";
             this.lblStudent.Size = new System.Drawing.Size(44, 13);
@@ -210,6 +218,7 @@
             // 
             this.radioBtnDa.AutoSize = true;
             this.radioBtnDa.BackColor = System.Drawing.Color.Transparent;
+            this.radioBtnDa.ForeColor = System.Drawing.Color.White;
             this.radioBtnDa.Location = new System.Drawing.Point(156, 384);
             this.radioBtnDa.Name = "radioBtnDa";
             this.radioBtnDa.Size = new System.Drawing.Size(39, 17);
@@ -222,6 +231,7 @@
             // 
             this.radioBtnNe.AutoSize = true;
             this.radioBtnNe.BackColor = System.Drawing.Color.Transparent;
+            this.radioBtnNe.ForeColor = System.Drawing.Color.White;
             this.radioBtnNe.Location = new System.Drawing.Point(210, 384);
             this.radioBtnNe.Name = "radioBtnNe";
             this.radioBtnNe.Size = new System.Drawing.Size(39, 17);
@@ -235,6 +245,7 @@
             this.btnRegRegistracija.BackColor = System.Drawing.SystemColors.Window;
             this.btnRegRegistracija.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnRegRegistracija.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegRegistracija.ForeColor = System.Drawing.Color.Black;
             this.btnRegRegistracija.Location = new System.Drawing.Point(214, 389);
             this.btnRegRegistracija.Name = "btnRegRegistracija";
             this.btnRegRegistracija.Size = new System.Drawing.Size(123, 23);
@@ -247,6 +258,7 @@
             // 
             this.lblOIB.AutoSize = true;
             this.lblOIB.BackColor = System.Drawing.Color.Transparent;
+            this.lblOIB.ForeColor = System.Drawing.Color.White;
             this.lblOIB.Location = new System.Drawing.Point(70, 143);
             this.lblOIB.Name = "lblOIB";
             this.lblOIB.Size = new System.Drawing.Size(25, 13);
@@ -374,6 +386,7 @@
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btnRegRegistracija);
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(24, 32);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(363, 418);

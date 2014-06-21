@@ -112,11 +112,18 @@ namespace eNarudžba.Forme
                         db.SaveChanges();
                     }
                 }
-                MessageBox.Show("Uspješno ste naručili hranu");
+                string poruka = "Uspješno ste naručili hranu";
+                string naslov = "Obavijest";
+                PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
+                upozorenje.ShowDialog();
             }
             else
             {
-                MessageBox.Show("Morate odabrati hranu.");
+                string poruka2 = "Morate odabrati hranu";
+                string naslov2 = "Upozorenje";
+                PorukePonuda upozorenje2 = new PorukePonuda(naslov2, poruka2);
+                upozorenje2.ShowDialog();
+                
             }
            
         }
@@ -127,7 +134,43 @@ namespace eNarudžba.Forme
             PohraniNarudzbu();
         }
 
-        private void dgvPonudaJelovnika_CellClick(object sender, DataGridViewCellEventArgs e)
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            GlavnaFormaNarucitelj glavnaFormaNarucitelj = new GlavnaFormaNarucitelj(OibKorisnika);
+            glavnaFormaNarucitelj.Show();
+            this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private Point mouse_offset;
+
+        private void PonudaJelovnika_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void PonudaJelovnika_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos;
+            }
+        }
+
+        private void dgvPonudaJelovnika_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Int32 selektiraniRed = dgvPonudaJelovnika.Rows.GetRowCount(DataGridViewElementStates.Selected);
 
@@ -139,18 +182,6 @@ namespace eNarudžba.Forme
 
                 IdHrana.Add(int.Parse(dgvPonudaJelovnika.SelectedCells[0].Value.ToString()));
             }
-            else
-            {
-                MessageBox.Show("Nije odabran red");
-            }
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            GlavnaFormaNarucitelj glavnaFormaNarucitelj = new GlavnaFormaNarucitelj(OibKorisnika);
-            glavnaFormaNarucitelj.Show();
-            this.Close();
-        }
-
     }
 }

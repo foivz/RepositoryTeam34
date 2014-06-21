@@ -92,6 +92,42 @@
     <Compile Include="Forme\PonudaJelovnika.Designer.cs">
       <DependentUpon>PonudaJelovnika.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forme\poruke.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\poruke.Designer.cs">
+      <DependentUpon>poruke.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\PorukeKomentiranje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PorukeKomentiranje.Designer.cs">
+      <DependentUpon>PorukeKomentiranje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\PorukePonuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PorukePonuda.Designer.cs">
+      <DependentUpon>PorukePonuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\PorukeRegistracija.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PorukeRegistracija.Designer.cs">
+      <DependentUpon>PorukeRegistracija.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\PorukeStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PorukeStatus.Designer.cs">
+      <DependentUpon>PorukeStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forme\PorukeUpravljanje.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forme\PorukeUpravljanje.Designer.cs">
+      <DependentUpon>PorukeUpravljanje.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forme\PovijestNarudzbi.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,6 +240,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\PonudaJelovnika.resx">
       <DependentUpon>PonudaJelovnika.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\poruke.resx">
+      <DependentUpon>poruke.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PorukeKomentiranje.resx">
+      <DependentUpon>PorukeKomentiranje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PorukePonuda.resx">
+      <DependentUpon>PorukePonuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PorukeRegistracija.resx">
+      <DependentUpon>PorukeRegistracija.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PorukeStatus.resx">
+      <DependentUpon>PorukeStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forme\PorukeUpravljanje.resx">
+      <DependentUpon>PorukeUpravljanje.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forme\PovijestNarudzbi.resx">
       <DependentUpon>PovijestNarudzbi.cs</DependentUpon>

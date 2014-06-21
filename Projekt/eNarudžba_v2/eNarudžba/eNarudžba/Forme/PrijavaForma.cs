@@ -68,16 +68,18 @@ namespace eNarudžba.Forme
                 else 
                 {
                     Validacija = false;
-                    MessageBox.Show("Pogrešno uneseni podaci ili nemate pravo pristupa");
-
+                    string poruka = "Pogrešno uneseni podaci ili nemate pravo pristupa";
+                    poruke porukaUpozornja=new poruke(poruka);
+                    porukaUpozornja.ShowDialog();
                     
                 }
             }
             else 
             {
                 Validacija = false;
-                MessageBox.Show("Niste unijeli podatke za prijavu", "Greška kod prijave");
-               
+                string poruka2 = "Niste unijeli podatke za prijavu";
+                poruke porukaUpozornja = new poruke(poruka2);
+                porukaUpozornja.ShowDialog();
             }
         }
 

@@ -18,6 +18,9 @@ namespace eNarudžba.Forme
         private Int64 oibKorisnika;
         private int idNarudzbe;
         private int idHrane;
+        private bool provjera=false;
+
+        public bool Provjera { get { return provjera; } set { provjera = value; } }
 
         public Int64 OibKorisnika { get { return oibKorisnika; } set { oibKorisnika= value; } }
         public int IdNarudzbe { get { return idNarudzbe; } set { idNarudzbe = value; } }
@@ -73,8 +76,19 @@ namespace eNarudžba.Forme
 
         private void btnKomentiranje_Click(object sender, EventArgs e)
         {
-            KomentiranjeHrane komentiranjeHrane = new KomentiranjeHrane(IdHrane);
-            komentiranjeHrane.Show();
+            if (Provjera)
+            {
+                KomentiranjeHrane komentiranjeHrane = new KomentiranjeHrane(IdHrane);
+                komentiranjeHrane.Show();
+            }
+            else
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Morate odabrati hranu";
+                PorukeKomentiranje upozorenje = new PorukeKomentiranje(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+            
         }
 
 
@@ -87,10 +101,7 @@ namespace eNarudžba.Forme
                 IdNarudzbe = int.Parse(dgwPovijestNarudzbi.SelectedCells[0].Value.ToString());
                 PrikaziDetaljeNarudzbe(IdNarudzbe);
             }
-            else
-            {
-                MessageBox.Show("Nije odabran red");
-            }
+
         }
 
         private void dgwPovijestNarudzbiDetalji_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -99,12 +110,9 @@ namespace eNarudžba.Forme
             if (selektiraniRed2 > 0)
             {
                 IdHrane = int.Parse(dgwPovijestNarudzbiDetalji.SelectedCells[0].Value.ToString());
-
+                Provjera = true;
             }
-            else
-            {
-                MessageBox.Show("Nije odabran red");
-            }
+            
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -112,6 +120,32 @@ namespace eNarudžba.Forme
             GlavnaFormaNarucitelj glavnaFormaNarucitelj = new GlavnaFormaNarucitelj(OibKorisnika);
             glavnaFormaNarucitelj.Show();
             this.Close();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private Point mouse_offset;
+        private void PovijestNarudzbi_MouseDown(object sender, MouseEventArgs e)
+        {
+            mouse_offset = new Point(-e.X, -e.Y);
+        }
+
+        private void PovijestNarudzbi_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            {
+                Point mousePos = Control.MousePosition;
+                mousePos.Offset(mouse_offset.X, mouse_offset.Y);
+                this.Location = mousePos;
+            }
         }
 
      
