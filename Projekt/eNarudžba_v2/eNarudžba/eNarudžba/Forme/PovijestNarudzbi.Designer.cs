@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PovijestNarudzbi));
             this.btnPracenjeStanjaNarudzbe = new System.Windows.Forms.Button();
             this.dgwPovijestNarudzbi = new System.Windows.Forms.DataGridView();
@@ -38,6 +39,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgwPovijestNarudzbi)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgwPovijestNarudzbiDetalji)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -55,6 +57,8 @@
             this.btnPracenjeStanjaNarudzbe.Size = new System.Drawing.Size(132, 23);
             this.btnPracenjeStanjaNarudzbe.TabIndex = 1;
             this.btnPracenjeStanjaNarudzbe.Text = "Praćenje stanja narudžbe";
+            this.toolTip1.SetToolTip(this.btnPracenjeStanjaNarudzbe, "Gumb za praćenje stanja narudžbe.\r\nPotrebno je odabrati određenu narudžbu,\r\nda bi" +
+        " mogli pratiti njezino stanje.");
             this.btnPracenjeStanjaNarudzbe.UseVisualStyleBackColor = false;
             this.btnPracenjeStanjaNarudzbe.Click += new System.EventHandler(this.btnPracenjeStanjaNarudzbe_Click);
             // 
@@ -72,8 +76,10 @@
             this.dgwPovijestNarudzbi.Name = "dgwPovijestNarudzbi";
             this.dgwPovijestNarudzbi.ReadOnly = true;
             this.dgwPovijestNarudzbi.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwPovijestNarudzbi.ShowCellToolTips = false;
             this.dgwPovijestNarudzbi.Size = new System.Drawing.Size(499, 167);
             this.dgwPovijestNarudzbi.TabIndex = 4;
+            this.toolTip1.SetToolTip(this.dgwPovijestNarudzbi, "Prikaz Vaših narudžbi");
             this.dgwPovijestNarudzbi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwPovijestNarudzbi_CellClick);
             // 
             // dgwPovijestNarudzbiDetalji
@@ -92,8 +98,10 @@
             this.dgwPovijestNarudzbiDetalji.Name = "dgwPovijestNarudzbiDetalji";
             this.dgwPovijestNarudzbiDetalji.ReadOnly = true;
             this.dgwPovijestNarudzbiDetalji.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgwPovijestNarudzbiDetalji.ShowCellToolTips = false;
             this.dgwPovijestNarudzbiDetalji.Size = new System.Drawing.Size(499, 169);
             this.dgwPovijestNarudzbiDetalji.TabIndex = 5;
+            this.toolTip1.SetToolTip(this.dgwPovijestNarudzbiDetalji, "Prikaz detalja Vaše narudžbe.\r\nZa prikaz detalja potrebno je odabrati narudžbu.");
             this.dgwPovijestNarudzbiDetalji.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwPovijestNarudzbiDetalji_CellClick);
             // 
             // btnKomentiranje
@@ -106,6 +114,8 @@
             this.btnKomentiranje.Size = new System.Drawing.Size(132, 23);
             this.btnKomentiranje.TabIndex = 2;
             this.btnKomentiranje.Text = "Komentiranje hrane";
+            this.toolTip1.SetToolTip(this.btnKomentiranje, "Gumb za komentiranje određnog jela.\r\nPotrebno je odabrati naručeno jelo kako bi s" +
+        "te\r\nmogli komentrirati.");
             this.btnKomentiranje.UseVisualStyleBackColor = false;
             this.btnKomentiranje.Click += new System.EventHandler(this.btnKomentiranje_Click);
             // 
@@ -140,6 +150,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Povratak na prethodnu formu");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -151,6 +162,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 9;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Minimiziranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
@@ -162,6 +174,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox3.TabIndex = 10;
             this.pictureBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox3, "Zatvaranje forme");
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // PovijestNarudzbi
@@ -208,6 +221,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
 
 
 

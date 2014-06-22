@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GlavnaFormaNarucitelj));
             this.btnPonudaJelovnika = new System.Windows.Forms.Button();
             this.btnPovijestNarudžbi = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +50,7 @@
             this.btnPonudaJelovnika.Size = new System.Drawing.Size(283, 62);
             this.btnPonudaJelovnika.TabIndex = 0;
             this.btnPonudaJelovnika.Text = "Ponuda jelovnika";
+            this.toolTip1.SetToolTip(this.btnPonudaJelovnika, "Gumb za pregled ponude jelovnika");
             this.btnPonudaJelovnika.UseVisualStyleBackColor = false;
             this.btnPonudaJelovnika.Click += new System.EventHandler(this.btnPonudaJelovnika_Click);
             // 
@@ -61,6 +64,7 @@
             this.btnPovijestNarudžbi.Size = new System.Drawing.Size(283, 62);
             this.btnPovijestNarudžbi.TabIndex = 1;
             this.btnPovijestNarudžbi.Text = "Povijest narudžbi";
+            this.toolTip1.SetToolTip(this.btnPovijestNarudžbi, "Gumb za pregled Vaših prethodnih narudžbi");
             this.btnPovijestNarudžbi.UseVisualStyleBackColor = false;
             this.btnPovijestNarudžbi.Click += new System.EventHandler(this.btnPovijestNarudžbi_Click);
             // 
@@ -73,6 +77,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Minimiziranje forme");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -84,6 +89,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Zatvaranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // GlavnaFormaNarucitelj
@@ -116,5 +122,6 @@
         private System.Windows.Forms.Button btnPovijestNarudžbi;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

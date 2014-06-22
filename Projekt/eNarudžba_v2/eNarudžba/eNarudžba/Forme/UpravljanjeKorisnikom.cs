@@ -25,20 +25,26 @@ namespace eNarudžba.Forme
         public UpravljanjeKorisnikom()
         {
             InitializeComponent();
-            this.BackColor = Color.FromArgb(0, 140, 186);
         }
 
+        /// <summary>
+        /// Na događaj load forme poziva se metoda
+        /// PrikaziPasivne() i PrikaziAktivne().
+        /// </summary>
         private void UpravljanjeKorisnikom_Load(object sender, EventArgs e)
         {
             PrikaziPasivne();
             PrikaziAktivne();
         }
 
+        /// <summary>
+        /// Metoda kojom dohvaćamo sve naručitelje iz DB koji su blokirani i
+        /// rezultat upita je izvor podataka za datagridview kontrolu.
+        /// </summary>
         private void PrikaziPasivne()
         {
             using (T34_DBEntities6 db=new T34_DBEntities6())
             {
-
                 var upit = (from k in db.Korisnik where k.status == 1 && k.TipKorisnika==2 select new {OIB=k.OIB, Ime=k.Ime, Prezime=k.Prezime, KorisnickoIme=k.Username }).ToList();
                 BindingSource bindingSourcePasivni = new BindingSource();
                 bindingSourcePasivni.DataSource = upit;
@@ -46,11 +52,14 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Metoda kojom dohvaćamo sve naručitelje iz DB koji su nisu blokirani i
+        /// rezultat upita je izvor podataka za datagridview kontrolu.
+        /// </summary>
         private void PrikaziAktivne()
         {
             using (T34_DBEntities6 db = new T34_DBEntities6())
             {
-
                 var upit = (from k in db.Korisnik where k.status == 0 && k.TipKorisnika==2 select new {OIB=k.OIB, Ime = k.Ime, Prezime = k.Prezime, KorisnickoIme = k.Username }).ToList();
                 BindingSource bindingSourceAktivni = new BindingSource();
                 bindingSourceAktivni.DataSource = upit;
@@ -58,7 +67,10 @@ namespace eNarudžba.Forme
             }
         }
 
-
+        /// <summary>
+        /// Na događaj RowHeaderMouseClick datagridview kontrole pohranjujemo u varijablu, 
+        /// ID blokiranog naručitelja.
+        /// </summary>
         private void dgvPasivni_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Int32 selektiraniRed = dgvPasivni.Rows.GetRowCount(DataGridViewElementStates.Selected);
@@ -69,6 +81,10 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Na događaj RowHeaderMouseClick datagridview kontrole pohranjujemo u varijablu, 
+        /// ID ne blokiranog naručitelja.
+        /// </summary>
         private void dgvAktivni_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Int32 selektiraniRed2 = dgvAktivni.Rows.GetRowCount(DataGridViewElementStates.Selected);
@@ -79,6 +95,11 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Metoda kojom aktiviramo blokiranog naručitelja.
+        /// Prije same aktivacije provjerava se da li je varijabla ProvjeraP true
+        /// odsnosno da li je odabran naručitelj za aktivaciju.
+        /// </summary>
         private void Aktiviraj()
         {
             if (ProvjeraP)
@@ -107,12 +128,20 @@ namespace eNarudžba.Forme
 
         }
 
+        /// <summary>
+        /// Metoda koja klikom na gumb poziva load događaj forme UpravljanjeKorisnikom
+        /// </summary>
         private void btnAktiviraj_Click(object sender, EventArgs e)
         {
             Aktiviraj();
             UpravljanjeKorisnikom_Load(this,null);
         }
 
+        /// <summary>
+        /// Metoda kojom blokiramo/deaktiviramo aktivnog naručitelja.
+        /// Prije same deaktivacije provjerava se da li je varijabla ProvjeraA true
+        /// odsnosno da li je odabran naručitelj za blokiranje.
+        /// </summary>
         private void Deaktiviraj() 
         {
             if (ProvjeraA)
@@ -141,13 +170,19 @@ namespace eNarudžba.Forme
 
         }
 
-
+        /// <summary>
+        /// Metoda koja klikom na gumb poziva load događaj forme UpravljanjeKorisnikom
+        /// </summary>
         private void btnBlokiraj_Click(object sender, EventArgs e)
         {
             Deaktiviraj();
             UpravljanjeKorisnikom_Load(this, null);
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku instancira prethodnu formu,te
+        /// zatvara postojeću.
+        /// </summary>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             GlavnaFormaDjelatnik glavnaFormaDjelatnik = new GlavnaFormaDjelatnik();
@@ -155,11 +190,17 @@ namespace eNarudžba.Forme
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku minimizira trenutnu formu.
+        /// </summary>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku zatvara trenutnu formu.
+        /// </summary>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -167,11 +208,17 @@ namespace eNarudžba.Forme
 
         private Point mouse_offset;
 
+        /// <summary>
+        /// Metoda pomoću koje saznajemo kordinate kursora miša kad je on pritisnut.
+        /// </summary>
         private void UpravljanjeKorisnikom_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
 
+        /// <summary>
+        /// Metoda pomoću koje mijenjamo kordinate trenutne forme.
+        /// </summary>
         private void UpravljanjeKorisnikom_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)

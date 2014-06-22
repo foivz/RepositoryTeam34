@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegistracijaForma));
             this.lblIme = new System.Windows.Forms.Label();
             this.lblPrezime = new System.Windows.Forms.Label();
@@ -62,6 +63,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -162,6 +165,7 @@
             this.txtBoxIme.Name = "txtBoxIme";
             this.txtBoxIme.Size = new System.Drawing.Size(205, 20);
             this.txtBoxIme.TabIndex = 8;
+            this.toolTip1.SetToolTip(this.txtBoxIme, "Polje za unos imena");
             this.txtBoxIme.TextChanged += new System.EventHandler(this.txtBoxIme_TextChanged);
             // 
             // txtBoxPrezime
@@ -170,6 +174,7 @@
             this.txtBoxPrezime.Name = "txtBoxPrezime";
             this.txtBoxPrezime.Size = new System.Drawing.Size(205, 20);
             this.txtBoxPrezime.TabIndex = 9;
+            this.toolTip1.SetToolTip(this.txtBoxPrezime, "Polje za unos prezimena");
             this.txtBoxPrezime.TextChanged += new System.EventHandler(this.txtBoxPrezime_TextChanged);
             // 
             // txtBoxRegKorIme
@@ -178,6 +183,7 @@
             this.txtBoxRegKorIme.Name = "txtBoxRegKorIme";
             this.txtBoxRegKorIme.Size = new System.Drawing.Size(205, 20);
             this.txtBoxRegKorIme.TabIndex = 10;
+            this.toolTip1.SetToolTip(this.txtBoxRegKorIme, "Polje za unos korisničko imena");
             this.txtBoxRegKorIme.TextChanged += new System.EventHandler(this.txtBoxRegKorIme_TextChanged);
             // 
             // txtBoxRegLozinka
@@ -186,6 +192,7 @@
             this.txtBoxRegLozinka.Name = "txtBoxRegLozinka";
             this.txtBoxRegLozinka.Size = new System.Drawing.Size(205, 20);
             this.txtBoxRegLozinka.TabIndex = 11;
+            this.toolTip1.SetToolTip(this.txtBoxRegLozinka, "Polje za unos lozinke");
             this.txtBoxRegLozinka.UseSystemPasswordChar = true;
             this.txtBoxRegLozinka.TextChanged += new System.EventHandler(this.txtBoxRegLozinka_TextChanged);
             // 
@@ -195,6 +202,7 @@
             this.txtBoxPotvrdaLozinke.Name = "txtBoxPotvrdaLozinke";
             this.txtBoxPotvrdaLozinke.Size = new System.Drawing.Size(205, 20);
             this.txtBoxPotvrdaLozinke.TabIndex = 12;
+            this.toolTip1.SetToolTip(this.txtBoxPotvrdaLozinke, "Polje za ponovni unos lozinke");
             this.txtBoxPotvrdaLozinke.UseSystemPasswordChar = true;
             this.txtBoxPotvrdaLozinke.TextChanged += new System.EventHandler(this.txtBoxPotvrdaLozinke_TextChanged);
             // 
@@ -204,6 +212,7 @@
             this.txtBoxEmail.Name = "txtBoxEmail";
             this.txtBoxEmail.Size = new System.Drawing.Size(205, 20);
             this.txtBoxEmail.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.txtBoxEmail, "Polje za unos Email adrese");
             this.txtBoxEmail.TextChanged += new System.EventHandler(this.txtBoxEmail_TextChanged);
             // 
             // txtBoxAdresa
@@ -212,6 +221,7 @@
             this.txtBoxAdresa.Name = "txtBoxAdresa";
             this.txtBoxAdresa.Size = new System.Drawing.Size(205, 20);
             this.txtBoxAdresa.TabIndex = 14;
+            this.toolTip1.SetToolTip(this.txtBoxAdresa, "Polje za unos adrese");
             this.txtBoxAdresa.Leave += new System.EventHandler(this.txtBoxAdresa_Leave);
             // 
             // radioBtnDa
@@ -225,6 +235,7 @@
             this.radioBtnDa.TabIndex = 15;
             this.radioBtnDa.TabStop = true;
             this.radioBtnDa.Text = "Da";
+            this.toolTip1.SetToolTip(this.radioBtnDa, "Status-student");
             this.radioBtnDa.UseVisualStyleBackColor = false;
             // 
             // radioBtnNe
@@ -238,6 +249,7 @@
             this.radioBtnNe.TabIndex = 16;
             this.radioBtnNe.TabStop = true;
             this.radioBtnNe.Text = "Ne";
+            this.toolTip1.SetToolTip(this.radioBtnNe, "Status-student");
             this.radioBtnNe.UseVisualStyleBackColor = false;
             // 
             // btnRegRegistracija
@@ -271,6 +283,7 @@
             this.txtBoxOIB.Name = "txtBoxOIB";
             this.txtBoxOIB.Size = new System.Drawing.Size(205, 20);
             this.txtBoxOIB.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.txtBoxOIB, "Polje za unos OIB-a");
             this.txtBoxOIB.TextChanged += new System.EventHandler(this.txtBoxOIB_TextChanged);
             // 
             // lblUpozorenjeIme
@@ -403,6 +416,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 30;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Povratak na prethodnu formu");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -414,6 +428,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 31;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Minimiziranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
@@ -425,7 +440,14 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox3.TabIndex = 32;
             this.pictureBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox3, "Zatvaranje forme");
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 1000;
+            this.toolTip1.InitialDelay = 500;
+            this.toolTip1.ReshowDelay = 100;
             // 
             // RegistracijaForma
             // 
@@ -469,6 +491,8 @@
             this.Name = "RegistracijaForma";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "eNarudžba";
+            this.toolTip2.SetToolTip(this, "Gumb za registraciju.\r\nZa uspješnu registraciju, sva polja moraju biti ispravno i" +
+        "spunjena.");
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.RegistracijaForma_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.RegistracijaForma_MouseMove);
             this.groupBox1.ResumeLayout(false);
@@ -515,5 +539,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

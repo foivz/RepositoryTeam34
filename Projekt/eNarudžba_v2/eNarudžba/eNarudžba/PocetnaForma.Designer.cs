@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PocetnaForma));
             this.btnPrijava = new System.Windows.Forms.Button();
             this.btnRegistracija = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -47,6 +49,7 @@
             this.btnPrijava.Size = new System.Drawing.Size(283, 57);
             this.btnPrijava.TabIndex = 0;
             this.btnPrijava.Text = "Prijava";
+            this.toolTip1.SetToolTip(this.btnPrijava, "Gumb za prijavu");
             this.btnPrijava.UseVisualStyleBackColor = false;
             this.btnPrijava.Click += new System.EventHandler(this.btnPrijava_Click);
             // 
@@ -60,6 +63,7 @@
             this.btnRegistracija.Size = new System.Drawing.Size(283, 57);
             this.btnRegistracija.TabIndex = 1;
             this.btnRegistracija.Text = "Registracija";
+            this.toolTip1.SetToolTip(this.btnRegistracija, "Gumb za registraciju");
             this.btnRegistracija.UseVisualStyleBackColor = false;
             this.btnRegistracija.Click += new System.EventHandler(this.btnRegistracija_Click);
             // 
@@ -72,6 +76,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Minimiziranje forme");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -83,6 +88,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Zatvaranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // PocetnaForma
@@ -115,6 +121,7 @@
         private System.Windows.Forms.Button btnRegistracija;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

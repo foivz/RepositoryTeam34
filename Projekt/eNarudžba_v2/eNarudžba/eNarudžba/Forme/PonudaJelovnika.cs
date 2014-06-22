@@ -23,14 +23,20 @@ namespace eNarudžba.Forme
         public int IdNarudzbe { get { return idNarudzbe; } set { idNarudzbe = value; } }
         public int IdHrane { get { return idHrane; } set { idHrane = value; } }
 
-
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="oib">OIB(id) korisnika koji je prijavljen.</param>
         public PonudaJelovnika(Int64 oib)
         {
             InitializeComponent();
             OibKorisnika = oib;
         }
 
-
+        /// <summary>
+        /// Metoda kojom dohvaćamo svu ponudu hrane iz DB i
+        /// rezultat upita je izvor podataka za datagridview kontrolu.
+        /// </summary>
         private void PonudaHrane()
         {
             using (T34_DBEntities6 db = new T34_DBEntities6())
@@ -44,13 +50,19 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Na događaj load forme poziva se metoda ponudaHrane()
+        /// </summary>
         private void PonudaJelovnika_Load(object sender, EventArgs e)
         {
             PonudaHrane();
         }
 
-
-
+        /// <summary>
+        /// Metoda kojom dohvaćamo sve komentare za određenu hranu iz DB i
+        /// rezultat upita je izvor podataka za datagridview kontrolu.
+        /// </summary>
+        /// <param name="id">ID hrane za koju se prikazuju komentari</param>
         private void PrikaziKomentare(int id)
         {
             using (T34_DBEntities6 db = new T34_DBEntities6())
@@ -62,6 +74,11 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Metoda kojom dohvaćamo sve sastojke za određenu hranu iz DB i
+        /// rezultat upita je izvor podataka za datagridview kontrolu.
+        /// </summary>
+        /// <param name="id">ID hrane za koju se prikazuju sastojci</param>
         private void PrikaziSastojke(int id)
         {
             using (T34_DBEntities6 db = new T34_DBEntities6())
@@ -74,13 +91,47 @@ namespace eNarudžba.Forme
 
             }
         }
-             
+
+        /// <summary>
+        /// Na događaj RowHeaderMouseClick datagridview kontrole pohranjujemo u listu
+        /// vrijednost 1. čelije (ID hrane) koju ćemo naručiti.
+        /// </summary>
+        private void dgvPonudaJelovnika_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            Int32 selektiraniRed = dgvPonudaJelovnika.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selektiraniRed > 0)
+            {
+                IdHrana.Add(int.Parse(dgvPonudaJelovnika.SelectedCells[0].Value.ToString()));
+            }
+        } 
+
+        /// <summary>
+        /// Na događaj CellClick datagridview kontrole pohranjujemo u varijablu, ID hrane koja 
+        /// se nalazi u onom redu gdje se kliknulo i pozivamo metode za prikaz komentara i sastojaka za 
+        /// za određenu hranu (ID hrane)
+        /// </summary>
+        private void dgvPonudaJelovnika_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Int32 selektiraniRed = dgvPonudaJelovnika.Rows.GetRowCount(DataGridViewElementStates.Selected);
+
+            if (selektiraniRed > 0)
+            {
+                IdHrane = int.Parse(dgvPonudaJelovnika.SelectedCells[0].Value.ToString());
+                PrikaziKomentare(IdHrane);
+                PrikaziSastojke(IdHrane);
+            }
+        }
+
+        /// <summary>
+        /// Metoda pomoću koje pohranjujemo u DB svu hranu koju je korisnik odabrao.
+        /// </summary>
         private void PohraniNarudzbu()
         {
 
             if (IdHrana.Count > 0)
             {
-                //pohranjujem narudžbu
+                //pohranjujemo narudžbu
                 using (var db = new T34_DBEntities6())
                 {
                     DateTime vrijemeNarudzbe = DateTime.Now;
@@ -94,7 +145,7 @@ namespace eNarudžba.Forme
                     db.SaveChanges();
 
 
-                    //dohvaćam ID te narudžbe
+                    //dohvaćamo ID te narudžbe
                     var upitID = (from n in db.Narudzba where n.IDnarucitelj == OibKorisnika select n).OrderByDescending(n => n.DatumVrijemeZaprimanja).FirstOrDefault();
                     IdNarudzbe = upitID.IDnarudzba;
 
@@ -128,13 +179,18 @@ namespace eNarudžba.Forme
            
         }
 
-
+        /// <summary>
+        /// Metoda koja klikom na gumb poziva metodu PohraniNarudzbu()
+        /// </summary>
         private void btnNaruci_Click(object sender, EventArgs e)
         {
             PohraniNarudzbu();
         }
 
-
+        /// <summary>
+        /// Metoda koja klikom na sliku instancira prethodnu formu,te
+        /// zatvara postojeću.
+        /// </summary>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             GlavnaFormaNarucitelj glavnaFormaNarucitelj = new GlavnaFormaNarucitelj(OibKorisnika);
@@ -142,12 +198,18 @@ namespace eNarudžba.Forme
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku minimizira trenutnu formu.
+        /// </summary>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
 
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku zatvara trenutnu formu.
+        /// </summary>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -155,11 +217,17 @@ namespace eNarudžba.Forme
 
         private Point mouse_offset;
 
+        /// <summary>
+        /// Metoda pomoću koje saznajemo kordinate kursora miša kad je on pritisnut.
+        /// </summary>
         private void PonudaJelovnika_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
 
+        /// <summary>
+        /// Metoda pomoću koje mijenjamo kordinate trenutne forme.
+        /// </summary>
         private void PonudaJelovnika_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -170,18 +238,5 @@ namespace eNarudžba.Forme
             }
         }
 
-        private void dgvPonudaJelovnika_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
-            Int32 selektiraniRed = dgvPonudaJelovnika.Rows.GetRowCount(DataGridViewElementStates.Selected);
-
-            if (selektiraniRed > 0)
-            {
-                IdHrane = int.Parse(dgvPonudaJelovnika.SelectedCells[0].Value.ToString());
-                PrikaziKomentare(IdHrane);
-                PrikaziSastojke(IdHrane);
-
-                IdHrana.Add(int.Parse(dgvPonudaJelovnika.SelectedCells[0].Value.ToString()));
-            }
-        }
     }
 }

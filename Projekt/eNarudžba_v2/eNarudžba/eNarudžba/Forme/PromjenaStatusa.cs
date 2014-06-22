@@ -13,11 +13,21 @@ namespace eNarudžba.Forme
     public partial class PromjenaStatusa : Form
     {
         int idNarudzbe;
+
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="id">ID narudžbe</param>
         public PromjenaStatusa(int id)
         {
             InitializeComponent();
             idNarudzbe = id;
         }
+
+        /// <summary>
+        /// Metoda kojom provjeravamo iz DB koje status određena narudžba sadrži i
+        /// reultat upita prikazujemo ili ne prikazujemo radio button kontrole
+        /// </summary>
         public void PrikaziStatuse()
         {
             using (var db = new T34_DBEntities6())
@@ -52,6 +62,13 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Metoda pomoću koje se provjerava koji radio button je odabran i
+        /// na temelju toga se u BP pohranjuje odgovarajući status narudžbe.
+        /// U slučaju da je odabran zadnji status, "narudžba je dostavljena"
+        /// ažurira se narudžba, odnosno mijenja joj se status u završeno
+        /// kako se kasnije djelatniku ta narudžba nebi prikazivala.
+        /// </summary>
         public void PromijeniStatus()
         {
             using (var db = new T34_DBEntities6())
@@ -130,25 +147,38 @@ namespace eNarudžba.Forme
                     
                 }
             }
-        } 
+        }
 
+        /// <summary>
+        /// Na događaj load forme poziva se metoda PrikaziStatuse()
+        /// </summary>
         private void PromjenaStatusa_Load(object sender, EventArgs e)
         {
             PrikaziStatuse();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na gumb poziva metodu PromijeniStatus, te se
+        /// trenutna forma zatvara.
+        /// </summary>
+
         private void btnPromijeniStatus_Click(object sender, EventArgs e)
         {
             PromijeniStatus();
             this.Close();
-  
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku minimizira trenutnu formu.
+        /// </summary>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku zatvara trenutnu formu.
+        /// </summary>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -156,11 +186,17 @@ namespace eNarudžba.Forme
 
         private Point mouse_offset;
 
+        /// <summary>
+        /// Metoda pomoću koje saznajemo kordinate kursora miša kad je on pritisnut.
+        /// </summary>
         private void PromjenaStatusa_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
 
+        /// <summary>
+        /// Metoda pomoću koje mijenjamo kordinate trenutne forme.
+        /// </summary>
         private void PromjenaStatusa_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)

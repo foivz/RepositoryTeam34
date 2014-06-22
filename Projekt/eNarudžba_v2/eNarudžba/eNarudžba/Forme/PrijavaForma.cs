@@ -13,26 +13,29 @@ namespace eNarudžba.Forme
     public partial class PrijavaForma : Form
     {
         private bool validacija=false;
-        private string korisnickoIme="";
-        private string lozinka="";
         private int tipKorisnika;
         private Int64 oibKorisnika;
         PocetnaForma pocetna;
 
         public bool Validacija { get { return validacija; } set { validacija = value; } }
-        public string KorisnickoIme { get { return korisnickoIme; } set { korisnickoIme = value; } }
-        public string Lozinka { get { return lozinka; } set { lozinka = value; } }
+
         public int TipKorisnika { get { return tipKorisnika; } set { tipKorisnika = value; } }
 
         public Int64 OibKorisnika { get { return oibKorisnika; } set { oibKorisnika = value; } }
 
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="forma">Prethodna forma tj. početna forma aplikacije</param>
         public PrijavaForma(PocetnaForma forma)
         {
             InitializeComponent();
             pocetna = forma;
         }
 
-
+        /// <summary>
+        /// Metoda koja klikom na gumb poziva metodu Prijava().
+        /// </summary>
         private void btnPrijavaPrijava_Click(object sender, EventArgs e)
         {
             Prijava();
@@ -56,22 +59,19 @@ namespace eNarudžba.Forme
                         glavnaFormaDjelatnik.Show();
                         this.Close();
                     }
-                    else 
+                    else
                     {
                         GlavnaFormaNarucitelj glavnaFormaNarucitelj = new GlavnaFormaNarucitelj(OibKorisnika);//makni this
                         glavnaFormaNarucitelj.Show();
                         this.Close();
-                    }
-
-                    
+                    }           
                 }
                 else 
                 {
                     Validacija = false;
                     string poruka = "Pogrešno uneseni podaci ili nemate pravo pristupa";
                     poruke porukaUpozornja=new poruke(poruka);
-                    porukaUpozornja.ShowDialog();
-                    
+                    porukaUpozornja.ShowDialog();                    
                 }
             }
             else 
@@ -95,12 +95,10 @@ namespace eNarudžba.Forme
             {
 
                 using (T34_DBEntities6 db = new T34_DBEntities6())
-                {                                                                   //makni loz==pass    //&& status!=1
+                {                                                             
                     var upit = (from k in db.Korisnik where k.Username == korIme && k.Lozinka == password select k).SingleOrDefault<Korisnik>();
                     OibKorisnika = upit.OIB;
-                  
-                    // ili samo prije if (upit.Status==0) onda moze dalje, ako ne onda je false
-
+                
                     if (upit.status == 0)
                     {
                         if (upit.Lozinka == password)
@@ -131,6 +129,10 @@ namespace eNarudžba.Forme
             return false;
         }
 
+        /// <summary>
+        /// Metoda koja klikom na link label instancira formu za registraciju, 
+        /// te zatvara postojeću formu.
+        /// </summary>
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             RegistracijaForma registracija = new RegistracijaForma(pocetna);
@@ -139,18 +141,27 @@ namespace eNarudžba.Forme
 
         }
 
-
+        /// <summary>
+        /// Metoda koja klikom na sliku prethodnu formu vraća iz minimiziranog stanja 
+        /// u normalno stanje,te zatvara postojeću formu.
+        /// </summary>
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
             pocetna.WindowState = FormWindowState.Normal;
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku minimizira trenutnu formu.
+        /// </summary>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku zatvara trenutnu formu.
+        /// </summary>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -159,18 +170,24 @@ namespace eNarudžba.Forme
 
         private Point mouse_offset;
 
+        /// <summary>
+        /// Metoda pomoću koje saznajemo kordinate kursora miša kad je on pritisnut.
+        /// </summary>
         private void PrijavaForma_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
 
+        /// <summary>
+        /// Metoda pomoću koje mijenjamo kordinate trenutne forme.
+        /// </summary>
         private void PrijavaForma_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
             {
                 Point mousePos = Control.MousePosition;
                 mousePos.Offset(mouse_offset.X, mouse_offset.Y);
-                this.Location = mousePos; //move the form to the desired location
+                this.Location = mousePos;
             }
         }
 

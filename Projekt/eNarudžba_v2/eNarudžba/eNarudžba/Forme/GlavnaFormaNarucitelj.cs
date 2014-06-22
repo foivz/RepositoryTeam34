@@ -13,46 +13,76 @@ namespace eNarudžba.Forme
 {
     public partial class GlavnaFormaNarucitelj : Form
     {
-        Int64 oib;
+        private Int64 oib;
+
+        public Int64 Oib
+        {
+            get { return oib; }
+            set { oib = value; }
+        }
+        
+
+        /// <summary>
+        /// Konstruktor forme 
+        /// </summary>
+        /// <param name="prijava">OIB(id) korisnika koji je prijavljen.</param>
         public GlavnaFormaNarucitelj(Int64 prijava)
         {
             InitializeComponent();
-            oib = prijava;
+            Oib = prijava;
         }
 
+        /// <summary>
+        /// Metoda klikom na gumb otvara novu formu Povijest narudžbi,
+        /// trenutnu formu zatvara.
+        /// </summary>
         private void btnPovijestNarudžbi_Click(object sender, EventArgs e)
         {
-            PovijestNarudzbi povijestNarudzbi = new PovijestNarudzbi(oib);
+            PovijestNarudzbi povijestNarudzbi = new PovijestNarudzbi(Oib);
             povijestNarudzbi.Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda klikom na gumb otvara novu formu Ponuda jelovnika,
+        /// trenutnu formu zatvara.
+        /// </summary>
         private void btnPonudaJelovnika_Click(object sender, EventArgs e)
         {
-            PonudaJelovnika ponudaJelovnika = new PonudaJelovnika(oib);
+            PonudaJelovnika ponudaJelovnika = new PonudaJelovnika(Oib);
             ponudaJelovnika.Show();
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku minimizira trenutnu formu.
+        /// </summary>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
-                
+            this.WindowState = FormWindowState.Minimized;        
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku zatvara trenutnu formu.
+        /// </summary>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-            this.Close();
-               
+            this.Close();        
         }
 
         private Point mouse_offset;
 
+        /// <summary>
+        /// Metoda pomoću koje saznajemo kordinate kursora miša kad je on pritisnut.
+        /// </summary>
         private void GlavnaFormaNarucitelj_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
 
+        /// <summary>
+        /// Metoda pomoću koje mijenjamo kordinate trenutne forme.
+        /// </summary>
         private void GlavnaFormaNarucitelj_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -62,9 +92,5 @@ namespace eNarudžba.Forme
                 this.Location = mousePos;
             }
         }
-
-        
-
-      
     }
 }

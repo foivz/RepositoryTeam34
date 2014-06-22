@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PromjenaStatusa));
             this.btnPromijeniStatus = new System.Windows.Forms.Button();
             this.rdbNarudzbaZaprimljena = new System.Windows.Forms.RadioButton();
@@ -38,6 +39,7 @@
             this.lblNarudzbaDOstavljena = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -52,6 +54,7 @@
             this.btnPromijeniStatus.Size = new System.Drawing.Size(117, 23);
             this.btnPromijeniStatus.TabIndex = 10;
             this.btnPromijeniStatus.Text = "Promijeni status";
+            this.toolTip1.SetToolTip(this.btnPromijeniStatus, "Gumb za promjenu statusa.\r\nPrije potvrde potrebno je odabrati status.");
             this.btnPromijeniStatus.UseVisualStyleBackColor = false;
             this.btnPromijeniStatus.Click += new System.EventHandler(this.btnPromijeniStatus_Click);
             // 
@@ -130,6 +133,7 @@
             this.lblNarudzbaDOstavljena.Size = new System.Drawing.Size(121, 13);
             this.lblNarudzbaDOstavljena.TabIndex = 16;
             this.lblNarudzbaDOstavljena.Text = "Narudžba je dostavljena";
+            this.toolTip1.SetToolTip(this.lblNarudzbaDOstavljena, "Narudžba je dostavljena.\r\nViše se nemože mijenjati status narudžbe.");
             this.lblNarudzbaDOstavljena.Visible = false;
             // 
             // pictureBox1
@@ -141,6 +145,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 17;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Minimiziranje forme");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -152,6 +157,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 18;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Zatvaranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // PromjenaStatusa
@@ -194,6 +200,7 @@
         private System.Windows.Forms.Label lblNarudzbaDOstavljena;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
 
     }
 }

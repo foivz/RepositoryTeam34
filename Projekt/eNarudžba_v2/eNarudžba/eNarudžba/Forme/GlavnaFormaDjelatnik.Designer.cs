@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GlavnaFormaDjelatnik));
             this.btnPregledZaprimljenihNarudzbi = new System.Windows.Forms.Button();
             this.btnUpravljanjeKorisnikom = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -47,10 +49,9 @@
             this.btnPregledZaprimljenihNarudzbi.Size = new System.Drawing.Size(283, 62);
             this.btnPregledZaprimljenihNarudzbi.TabIndex = 0;
             this.btnPregledZaprimljenihNarudzbi.Text = "Pregled zaprimljenih narudžbi";
+            this.toolTip1.SetToolTip(this.btnPregledZaprimljenihNarudzbi, "Gumb za pregled zaprimljenih narudžbi");
             this.btnPregledZaprimljenihNarudzbi.UseVisualStyleBackColor = false;
             this.btnPregledZaprimljenihNarudzbi.Click += new System.EventHandler(this.btnPregledZaprimljenihNarudzbi_Click);
-            this.btnPregledZaprimljenihNarudzbi.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GlavnaFormaDjelatnik_MouseDown);
-            this.btnPregledZaprimljenihNarudzbi.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GlavnaFormaDjelatnik_MouseMove);
             // 
             // btnUpravljanjeKorisnikom
             // 
@@ -62,10 +63,9 @@
             this.btnUpravljanjeKorisnikom.Size = new System.Drawing.Size(283, 62);
             this.btnUpravljanjeKorisnikom.TabIndex = 1;
             this.btnUpravljanjeKorisnikom.Text = "Upravljanje korisnikom";
+            this.toolTip1.SetToolTip(this.btnUpravljanjeKorisnikom, "Gumb za upravljanje korisnikom");
             this.btnUpravljanjeKorisnikom.UseVisualStyleBackColor = false;
             this.btnUpravljanjeKorisnikom.Click += new System.EventHandler(this.btnUpravljanjeKorisnikom_Click);
-            this.btnUpravljanjeKorisnikom.MouseDown += new System.Windows.Forms.MouseEventHandler(this.GlavnaFormaDjelatnik_MouseDown);
-            this.btnUpravljanjeKorisnikom.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GlavnaFormaDjelatnik_MouseMove);
             // 
             // pictureBox1
             // 
@@ -76,6 +76,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Minimiziranje forme");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -87,6 +88,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 3;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Zatvaranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // GlavnaFormaDjelatnik
@@ -119,5 +121,6 @@
         private System.Windows.Forms.Button btnUpravljanjeKorisnikom;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

@@ -22,15 +22,7 @@ namespace eNarudžba.Forme
         private bool provjeraPotLozinke = false;
         private bool provjeraEmail = false;
         private bool provjeraAdresa = false;
-        private string ime = "";
-        private string prezime = "";
-        private Int64 oib;
-        private string korIme = "";
-        private string lozinka = "";
-        private string potvrdaLozinke = "";
-        private string email = "";
-        private string adresa = "";
-        private bool student;
+
         PocetnaForma pocetna;
 
         public bool Validacija { get { return validacija; } set { validacija = value; } }
@@ -42,33 +34,32 @@ namespace eNarudžba.Forme
         public bool ProvjeraPotLozinke { get { return provjeraPotLozinke; } set { provjeraPotLozinke = value; } }
         public bool ProvjeraEmail { get { return provjeraEmail; } set { provjeraEmail = value; } }
         public bool ProvjeraAdresa { get { return provjeraAdresa; } set { provjeraAdresa = value; } }
-        public string Ime { get { return ime; } set { ime = value; } }
-        public string Prezime { get { return prezime; } set { prezime = value; } }
-        public Int64 Oib { get { return oib; } set { oib = value; } }
-        public string KorIme { get { return korIme; } set { korIme = value; } }
-        public string Lozinka { get { return lozinka; } set { lozinka = value; } }
-        public string PotrdaLozinke { get { return potvrdaLozinke; } set { potvrdaLozinke = value; } }
-        public string Email { get { return email; } set { email = value; } }
-        public string Adresa { get { return adresa; } set { adresa = value; } }
-        public bool Student { get { return student; } set { student = value; } }
 
-
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
+        /// <param name="forma">Prethodna forma tj. početna forma aplikacije</param>
         public RegistracijaForma(PocetnaForma forma)
         {
             InitializeComponent();
             pocetna = forma;
         }
+
+        /// <summary>
+        /// Metoda koja u slučaju ispravno unesenih svih podataka pohranjuje naručitelja u DB,
+        /// odnosno registrira ga.
+        /// </summary>
         private void Registracija() 
         {
             bool radbtn=false;
             if (txtBoxIme.Text.Length > 0 && txtBoxPrezime.Text.Length > 0 && txtBoxOIB.Text.Length>0 && txtBoxRegKorIme.Text.Length > 0 && txtBoxRegLozinka.Text.Length > 0 && txtBoxPotvrdaLozinke.Text.Length > 0 && txtBoxEmail.Text.Length > 0 && txtBoxAdresa.Text.Length > 0 && (radioBtnDa.Checked || radioBtnNe.Checked) && ProvjeraIme && ProvjeraPrezime && ProvjeraOIB && ProvjeraKorIme && ProvjeraLozinka && ProvjeraPotLozinke && ProvjeraEmail && ProvjeraAdresa )
-            {  //stavi više provjera tipa provjeraOIB=true, provjeraKOrim=true onda tek može sejvat
+            {  
 
-                if(radioBtnDa.Checked)   //ne funkcionira?  maknuti
+                if(radioBtnDa.Checked)  
                 {
                     radbtn = true;
                 }
-                //mora ici u else
+
                 using (var db = new T34_DBEntities6()) 
                 {      
                         Korisnik korisnik = new Korisnik
@@ -81,7 +72,7 @@ namespace eNarudžba.Forme
                             Email = txtBoxEmail.Text,
                             Adresa = txtBoxAdresa.Text,
                             Student = radbtn,
-                            TipKorisnika = 2 //2 je naručitelj 
+                            TipKorisnika = 2  
                         };
                         db.Korisnik.Add(korisnik);
                         db.SaveChanges();    
@@ -104,6 +95,9 @@ namespace eNarudžba.Forme
             }
         }
 
+        /// <summary>
+        /// Metoda koja klikom na gumb poziva metodu Registracija
+        /// </summary>
         private void btnRegRegistracija_Click(object sender, EventArgs e)
         {
             Registracija();
@@ -121,14 +115,22 @@ namespace eNarudžba.Forme
             return !samoSlova.IsMatch(tekst);
         }
 
+        /// <summary>
+        /// Metoda kojom pomoću regularnih izraza provjeravamo 
+        /// ispravnost email adrese.
+        /// </summary>
+        /// <param name="email">varijabla koju provjeravamo (tekst txtboxa)</param>
+        /// <returns>vraća false u slučaju kada sadržaj varijable neodgovara uzorku</returns>
         private bool Emailprovjera(string email)
         {
-            // provjeri malo bolje regex za email
             Regex provEmail = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             return provEmail.IsMatch(email);
         }
 
-
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio svoje ime i
+        /// dal sadrži samo slova.
+        /// </summary>
         private void txtBoxIme_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjeIme.Text = "";
@@ -157,6 +159,10 @@ namespace eNarudžba.Forme
 
         }
 
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio svoje prezime i
+        /// dal sadrži samo slova.
+        /// </summary>
         private void txtBoxPrezime_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjePrezime.Text = "";
@@ -183,9 +189,13 @@ namespace eNarudžba.Forme
                 
             }
                 
-
         }
 
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio svoj OIB i 
+        /// dal sadrži 11 znamenki. Te ako su prethodne provjere u redu, provjerava se
+        /// dal ne postoji naručitelj s unesenim OIB-om u BP.
+        /// </summary>
         private void txtBoxOIB_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjeOib.Text = "";
@@ -239,8 +249,12 @@ namespace eNarudžba.Forme
             }
  
           }
-        
 
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio korisničko ime koje
+        /// mora sadržavati samo slova.Ukoliko je prethodni uvjet ispunjen provjerava se zauzetost
+        /// korisničkog imena.
+        /// </summary>
         private void txtBoxRegKorIme_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjeKorIme.Text = "";
@@ -278,14 +292,14 @@ namespace eNarudžba.Forme
                         }
                         
                     }
-                }  
-                
-            }
-
-            
+                }          
+            }           
         }
 
-
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio lozinku i
+        /// dal se sastoji od minimalno 6 znakova.
+        /// </summary>
         private void txtBoxRegLozinka_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjeLozinka.Text = "";
@@ -308,14 +322,14 @@ namespace eNarudžba.Forme
                 else 
                 {
                     ProvjeraLozinka = true;
-                }
-                
-            }
-
-            
+                }              
+            }      
         }
 
-
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio potvrdu lozinke i
+        /// dali su lozinka i potvrda lozinke jednake.
+        /// </summary>
         private void txtBoxPotvrdaLozinke_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjeLozinka2.Text = "";
@@ -338,12 +352,15 @@ namespace eNarudžba.Forme
                 else
                 {
                     ProvjeraPotLozinke = true;
-                }
-                
+                }             
             }
         }
 
-
+        /// <summary>
+        /// Na događaj textChanged metoda provjera dal je naručitelj unio email adresu,
+        /// provjerava se ispravnost unesene email adrese, te na kraju se provjerava dal je
+        /// ta email adresa registrirana.
+        /// </summary>
         private void txtBoxEmail_TextChanged(object sender, EventArgs e)
         {
             lblUpozorenjeEmail.Text = "";
@@ -382,13 +399,13 @@ namespace eNarudžba.Forme
                         }
                         
                     }
-                }  
-                
-            }
-
-            
+                }                 
+            }            
         }
 
+        /// <summary>
+        /// Na događaj Leave metoda provjera dal je naručitelj unio svoju adresu.
+        /// </summary>
         private void txtBoxAdresa_Leave(object sender, EventArgs e)
         {
             lblUpozorenjeAdresa.Text = "";
@@ -407,28 +424,45 @@ namespace eNarudžba.Forme
             
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku prethodnu formu vraća iz minimiziranog stanja 
+        /// u normalno stanje, te zatvara postojeću formu.
+        /// </summary>
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             pocetna.WindowState = FormWindowState.Normal;
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku zatvara trenutnu formu.
+        /// </summary>
         private void pictureBox3_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Metoda koja klikom na sliku minimizira trenutnu formu.
+        /// </summary>
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
 
         private Point mouse_offset;
+
+        /// <summary>
+        /// Metoda pomoću koje saznajemo kordinate kursora miša kad je on pritisnut.
+        /// </summary>
         private void RegistracijaForma_MouseDown(object sender, MouseEventArgs e)
         {
             mouse_offset = new Point(-e.X, -e.Y);
         }
 
+        /// <summary>
+        /// Metoda pomoću koje mijenjamo kordinate trenutne forme.
+        /// </summary>
         private void RegistracijaForma_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Left)
@@ -438,7 +472,5 @@ namespace eNarudžba.Forme
                 this.Location = mousePos; 
             }
         }
-
- 
     }
 }

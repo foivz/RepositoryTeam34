@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PrijavaForma));
             this.lblKorisnickoIme = new System.Windows.Forms.Label();
             this.lblLozinka = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -73,6 +75,7 @@
             this.txtBoxKorisnickoIme.Name = "txtBoxKorisnickoIme";
             this.txtBoxKorisnickoIme.Size = new System.Drawing.Size(100, 20);
             this.txtBoxKorisnickoIme.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.txtBoxKorisnickoIme, "Polje za unos korisničkog imena");
             // 
             // txtBoxLozinka
             // 
@@ -80,11 +83,13 @@
             this.txtBoxLozinka.Name = "txtBoxLozinka";
             this.txtBoxLozinka.Size = new System.Drawing.Size(100, 20);
             this.txtBoxLozinka.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtBoxLozinka, "Polje za unos lozinke");
             this.txtBoxLozinka.UseSystemPasswordChar = true;
             // 
             // btnPrijavaPrijava
             // 
             this.btnPrijavaPrijava.BackColor = System.Drawing.SystemColors.Window;
+            this.btnPrijavaPrijava.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnPrijavaPrijava.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnPrijavaPrijava.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrijavaPrijava.Location = new System.Drawing.Point(157, 154);
@@ -92,6 +97,7 @@
             this.btnPrijavaPrijava.Size = new System.Drawing.Size(100, 23);
             this.btnPrijavaPrijava.TabIndex = 4;
             this.btnPrijavaPrijava.Text = "Prijava";
+            this.toolTip1.SetToolTip(this.btnPrijavaPrijava, "Gumb za prijavu");
             this.btnPrijavaPrijava.UseVisualStyleBackColor = false;
             this.btnPrijavaPrijava.Click += new System.EventHandler(this.btnPrijavaPrijava_Click);
             // 
@@ -117,6 +123,8 @@
             this.linkLabel1.TabIndex = 6;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Registrirajte se";
+            this.toolTip1.SetToolTip(this.linkLabel1, "Ukoliko ne posjedujete podatke za prijavu, \r\nmožete se registrirati klikom na \'Re" +
+        "gistrirajte se\'.");
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // groupBox1
@@ -139,6 +147,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Povratak na prethodnu formu");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // pictureBox2
@@ -150,6 +159,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 10;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Minimiziranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
@@ -161,6 +171,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox3.TabIndex = 11;
             this.pictureBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox3, "Zatvaranje forme");
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // PrijavaForma
@@ -208,5 +219,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

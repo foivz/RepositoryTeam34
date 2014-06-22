@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(KomentiranjeHrane));
             this.lblKomentar = new System.Windows.Forms.Label();
             this.txtKomentari = new System.Windows.Forms.TextBox();
             this.btnPotvrdi = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +58,7 @@
             this.txtKomentari.Name = "txtKomentari";
             this.txtKomentari.Size = new System.Drawing.Size(302, 172);
             this.txtKomentari.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.txtKomentari, "Prostor za upis Vašeg komentara za određeno jelo");
             // 
             // btnPotvrdi
             // 
@@ -67,6 +70,7 @@
             this.btnPotvrdi.Size = new System.Drawing.Size(75, 23);
             this.btnPotvrdi.TabIndex = 2;
             this.btnPotvrdi.Text = "Potvrdi";
+            this.toolTip1.SetToolTip(this.btnPotvrdi, "Gumb za potvrdu komentara");
             this.btnPotvrdi.UseVisualStyleBackColor = false;
             this.btnPotvrdi.Click += new System.EventHandler(this.btnPotvrdi_Click);
             // 
@@ -79,6 +83,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Minimiziranje forme");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -90,6 +95,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Zatvaranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // KomentiranjeHrane
@@ -124,5 +130,6 @@
         private System.Windows.Forms.Button btnPotvrdi;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

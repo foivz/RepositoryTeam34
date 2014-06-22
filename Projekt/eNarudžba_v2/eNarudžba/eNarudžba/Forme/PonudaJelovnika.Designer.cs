@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PonudaJelovnika));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PonudaJelovnika));
             this.dgvPonudaJelovnika = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,6 +42,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip3 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPonudaJelovnika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKomentari)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSastojci)).BeginInit();
@@ -63,10 +67,13 @@
             this.dgvPonudaJelovnika.Name = "dgvPonudaJelovnika";
             this.dgvPonudaJelovnika.ReadOnly = true;
             this.dgvPonudaJelovnika.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPonudaJelovnika.ShowCellToolTips = false;
             this.dgvPonudaJelovnika.Size = new System.Drawing.Size(501, 160);
             this.dgvPonudaJelovnika.TabIndex = 0;
-//            this.dgvPonudaJelovnika.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonudaJelovnika_CellClick);
+            this.toolTip1.SetToolTip(this.dgvPonudaJelovnika, resources.GetString("dgvPonudaJelovnika.ToolTip"));
+            this.dgvPonudaJelovnika.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPonudaJelovnika_CellClick);
             this.dgvPonudaJelovnika.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPonudaJelovnika_RowHeaderMouseClick);
+//            this.dgvPonudaJelovnika.SelectionChanged += new System.EventHandler(this.dgvPonudaJelovnika_SelectionChanged);
             // 
             // label1
             // 
@@ -106,8 +113,10 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvKomentari.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvKomentari.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvKomentari.ShowCellToolTips = false;
             this.dgvKomentari.Size = new System.Drawing.Size(241, 160);
             this.dgvKomentari.TabIndex = 3;
+            this.toolTip2.SetToolTip(this.dgvKomentari, "Prikaz komentara određenog jela");
             // 
             // btnNaruci
             // 
@@ -136,8 +145,10 @@
             this.dgvSastojci.Name = "dgvSastojci";
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvSastojci.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvSastojci.ShowCellToolTips = false;
             this.dgvSastojci.Size = new System.Drawing.Size(243, 160);
             this.dgvSastojci.TabIndex = 5;
+            this.toolTip2.SetToolTip(this.dgvSastojci, "Prikaz sastojaka određenog jela");
             // 
             // label3
             // 
@@ -159,6 +170,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox1, "Povratak na prethodnu formu");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -170,6 +182,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 8;
             this.pictureBox2.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox2, "Minimiziranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
@@ -181,7 +194,26 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox3.TabIndex = 9;
             this.pictureBox3.TabStop = false;
+            this.toolTip2.SetToolTip(this.pictureBox3, "Zatvaranje forme");
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutoPopDelay = 7000;
+            this.toolTip1.InitialDelay = 1000;
+            this.toolTip1.ReshowDelay = 1000;
+            // 
+            // toolTip2
+            // 
+            this.toolTip2.AutoPopDelay = 2500;
+            this.toolTip2.InitialDelay = 500;
+            this.toolTip2.ReshowDelay = 100;
+            // 
+            // toolTip3
+            // 
+            this.toolTip3.AutoPopDelay = 10000;
+            this.toolTip3.InitialDelay = 500;
+            this.toolTip3.ReshowDelay = 100;
             // 
             // PonudaJelovnika
             // 
@@ -204,6 +236,7 @@
             this.Name = "PonudaJelovnika";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "eNaruždba";
+            this.toolTip3.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.Load += new System.EventHandler(this.PonudaJelovnika_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PonudaJelovnika_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PonudaJelovnika_MouseMove);
@@ -230,5 +263,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ToolTip toolTip2;
+        private System.Windows.Forms.ToolTip toolTip3;
     }
 }

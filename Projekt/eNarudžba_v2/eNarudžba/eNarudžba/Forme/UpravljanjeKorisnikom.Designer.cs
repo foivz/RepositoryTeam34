@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpravljanjeKorisnikom));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,6 +39,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPasivni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAktivni)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -52,9 +54,9 @@
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(36, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
+            this.label1.Size = new System.Drawing.Size(88, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Pasivni korisnici";
+            this.label1.Text = "Pasivni naručitelji";
             // 
             // label2
             // 
@@ -63,9 +65,9 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(36, 246);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 13);
+            this.label2.Size = new System.Drawing.Size(86, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Aktivni korisnici";
+            this.label2.Text = "Aktivni naručitelji";
             // 
             // dgvPasivni
             // 
@@ -82,8 +84,10 @@
             this.dgvPasivni.Name = "dgvPasivni";
             this.dgvPasivni.ReadOnly = true;
             this.dgvPasivni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPasivni.ShowCellToolTips = false;
             this.dgvPasivni.Size = new System.Drawing.Size(337, 150);
             this.dgvPasivni.TabIndex = 2;
+            this.toolTip1.SetToolTip(this.dgvPasivni, "Prikaz korisnka koji trenutno imaju zabranjen pristup aplikaciji.");
             this.dgvPasivni.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPasivni_RowHeaderMouseClick);
             // 
             // dgvAktivni
@@ -98,8 +102,10 @@
             this.dgvAktivni.MultiSelect = false;
             this.dgvAktivni.Name = "dgvAktivni";
             this.dgvAktivni.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvAktivni.ShowCellToolTips = false;
             this.dgvAktivni.Size = new System.Drawing.Size(337, 150);
             this.dgvAktivni.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.dgvAktivni, "Prikaz korisnka koji trenutno imaju pristup aplikaciji.");
             this.dgvAktivni.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAktivni_RowHeaderMouseClick);
             // 
             // btnAktiviraj
@@ -113,6 +119,8 @@
             this.btnAktiviraj.Size = new System.Drawing.Size(75, 23);
             this.btnAktiviraj.TabIndex = 4;
             this.btnAktiviraj.Text = "Aktiviraj";
+            this.toolTip1.SetToolTip(this.btnAktiviraj, "Gumb za omogućavanje pristupa trenutno blokiranom korisniku.\r\nPotrebno je odabrat" +
+        "i pasivnog korisnika.");
             this.btnAktiviraj.UseVisualStyleBackColor = false;
             this.btnAktiviraj.Click += new System.EventHandler(this.btnAktiviraj_Click);
             // 
@@ -127,6 +135,8 @@
             this.btnBlokiraj.Size = new System.Drawing.Size(75, 23);
             this.btnBlokiraj.TabIndex = 5;
             this.btnBlokiraj.Text = "Blokiraj";
+            this.toolTip1.SetToolTip(this.btnBlokiraj, "Gumb za onemogućavanje pristupa trenutno aktivnom korisniku.\r\nPotrebno je odabrat" +
+        "i aktivnog korisnika.\r\n");
             this.btnBlokiraj.UseVisualStyleBackColor = false;
             this.btnBlokiraj.Click += new System.EventHandler(this.btnBlokiraj_Click);
             // 
@@ -139,6 +149,7 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox1, "Povratak na prethodnu formu");
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // pictureBox2
@@ -150,6 +161,7 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox2, "Minimiziranje forme");
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // pictureBox3
@@ -161,6 +173,7 @@
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox3.TabIndex = 8;
             this.pictureBox3.TabStop = false;
+            this.toolTip1.SetToolTip(this.pictureBox3, "Zatvaranje forme");
             this.pictureBox3.Click += new System.EventHandler(this.pictureBox3_Click);
             // 
             // UpravljanjeKorisnikom
@@ -208,5 +221,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
