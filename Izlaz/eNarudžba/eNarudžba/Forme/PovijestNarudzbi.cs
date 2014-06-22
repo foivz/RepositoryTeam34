@@ -53,16 +53,27 @@ namespace eNarudžba.Forme
         /// </summary>
         private void PrikaziPovijestNarudzbi()
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana where n.IDnarucitelj == OibKorisnika group new { n, nh, h } by new { n.IDnarudzba, n.DatumVrijemeZaprimanja } into grup select new { grup.Key.IDnarudzba, grup.Key.DatumVrijemeZaprimanja, Cijena = grup.Sum(h => h.h.Cijena) }).OrderByDescending(n => n.IDnarudzba).ToList();
-            
-                BindingSource bindingSourcePovijestNarudzbi = new BindingSource();
-                bindingSourcePovijestNarudzbi.DataSource = upit;
-                dgwPovijestNarudzbi.DataSource = bindingSourcePovijestNarudzbi;
-                dgwPovijestNarudzbi.Columns[0].HeaderText = "Br. narudžbe";
-                dgwPovijestNarudzbi.Columns[1].HeaderText = "Datum i vrijeme naručivanja";
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana where n.IDnarucitelj == OibKorisnika group new { n, nh, h } by new { n.IDnarudzba, n.DatumVrijemeZaprimanja } into grup select new { grup.Key.IDnarudzba, grup.Key.DatumVrijemeZaprimanja, Cijena = grup.Sum(h => h.h.Cijena) }).OrderByDescending(n => n.IDnarudzba).ToList();
+
+                    BindingSource bindingSourcePovijestNarudzbi = new BindingSource();
+                    bindingSourcePovijestNarudzbi.DataSource = upit;
+                    dgwPovijestNarudzbi.DataSource = bindingSourcePovijestNarudzbi;
+                    dgwPovijestNarudzbi.Columns[0].HeaderText = "Br. narudžbe";
+                    dgwPovijestNarudzbi.Columns[1].HeaderText = "Datum i vrijeme naručivanja";
+                }
             }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeKomentiranje upozorenje = new PorukeKomentiranje(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -72,14 +83,25 @@ namespace eNarudžba.Forme
         /// <param name="id">ID narudžbe za koju se prikazuju detalji</param>
         private void PrikaziDetaljeNarudzbe(int id) 
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
-            {            
-                var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB join vh in db.VelicinaHrane on h.IDvelicinaHrane equals vh.IDvelicinaHrane where n.IDnarudzba == id select new { h.IDhrana,h.Naziv, vh.Opis,h.Cijena }).ToList();
-                BindingSource bindingSourceDetalji = new BindingSource();
-                bindingSourceDetalji.DataSource = upit;
-                dgwPovijestNarudzbiDetalji.DataSource = bindingSourceDetalji;
-                dgwPovijestNarudzbiDetalji.Columns[0].HeaderText = "Br. hrane";
+            try
+            {
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB join vh in db.VelicinaHrane on h.IDvelicinaHrane equals vh.IDvelicinaHrane where n.IDnarudzba == id select new { h.IDhrana, h.Naziv, vh.Opis, h.Cijena }).ToList();
+                    BindingSource bindingSourceDetalji = new BindingSource();
+                    bindingSourceDetalji.DataSource = upit;
+                    dgwPovijestNarudzbiDetalji.DataSource = bindingSourceDetalji;
+                    dgwPovijestNarudzbiDetalji.Columns[0].HeaderText = "Br. hrane";
+                }
             }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeKomentiranje upozorenje = new PorukeKomentiranje(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>

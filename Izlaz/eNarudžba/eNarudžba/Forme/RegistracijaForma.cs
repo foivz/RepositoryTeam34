@@ -60,8 +60,10 @@ namespace eNarudžba.Forme
                     radbtn = true;
                 }
 
-                using (var db = new T34_DBEntities6()) 
-                {      
+                try
+                {
+                    using (var db = new T34_DBEntities6())
+                    {
                         Korisnik korisnik = new Korisnik
                         {
                             Ime = txtBoxIme.Text,
@@ -72,18 +74,26 @@ namespace eNarudžba.Forme
                             Email = txtBoxEmail.Text,
                             Adresa = txtBoxAdresa.Text,
                             Student = radbtn,
-                            TipKorisnika = 2  
+                            TipKorisnika = 2
                         };
                         db.Korisnik.Add(korisnik);
-                        db.SaveChanges();    
-                }
+                        db.SaveChanges();
+                    }
 
-                Validacija = true;
-                string naslov = "Obavijest";
-                string poruka = "Uspješno ste se registrirali";
-                PorukeRegistracija poruke = new PorukeRegistracija(naslov, poruka);
-                poruke.ShowDialog();
-                this.Close();
+                    Validacija = true;
+                    string naslov = "Obavijest";
+                    string poruka = "Uspješno ste se registrirali";
+                    PorukeRegistracija poruke = new PorukeRegistracija(naslov, poruka);
+                    poruke.ShowDialog();
+                    this.Close();
+                }
+                catch (Exception)
+                {
+                    string naslov1 = "Upozorenje";
+                    string poruka1 = "Provjerite internetsku vezu";
+                    PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                    poruke1.ShowDialog();
+                }
             }
             else 
             {
@@ -227,23 +237,34 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities6()) 
+                    try
                     {
-                        Int64 provjeraOib = Int64.Parse(txtBoxOIB.Text);
-                        var upitOIB = (from k in db.Korisnik where k.OIB == provjeraOib select k ).FirstOrDefault<Korisnik>();
+                        using (var db = new T34_DBEntities6())
+                        {
+                            Int64 provjeraOib = Int64.Parse(txtBoxOIB.Text);
+                            var upitOIB = (from k in db.Korisnik where k.OIB == provjeraOib select k).FirstOrDefault<Korisnik>();
 
-                        if (upitOIB != null)
-                        {
-                            lblUpozorenjeOib.Text = "OIB je već registriran.";
-                            lblUpozorenjeOib.Visible = true;
-                            ProvjeraOIB = false;
+                            if (upitOIB != null)
+                            {
+                                lblUpozorenjeOib.Text = "OIB je već registriran.";
+                                lblUpozorenjeOib.Visible = true;
+                                ProvjeraOIB = false;
+                            }
+                            else
+                            {
+                                ProvjeraOIB = true;
+                            }
+
                         }
-                        else 
-                        {
-                            ProvjeraOIB = true;
-                        }
-                        
                     }
+                    catch (Exception)
+                    {
+                        string naslov1 = "Upozorenje";
+                        string poruka1 = "Provjerite internetsku vezu";
+                        PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                        poruke1.ShowDialog();
+                    }
+
                 }                
                 
             }
@@ -276,21 +297,31 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities6())
+                    try
                     {
-                        
-                        var upitKorIme = (from k in db.Korisnik where k.Username == txtBoxRegKorIme.Text select k).FirstOrDefault<Korisnik>();
-                        if (upitKorIme != null)
+                        using (var db = new T34_DBEntities6())
                         {
-                            lblUpozorenjeKorIme.Text = "Korisničko ime je zauzeto.";
-                            lblUpozorenjeKorIme.Visible = true;
-                            ProvjeraKorIme = false;
+
+                            var upitKorIme = (from k in db.Korisnik where k.Username == txtBoxRegKorIme.Text select k).FirstOrDefault<Korisnik>();
+                            if (upitKorIme != null)
+                            {
+                                lblUpozorenjeKorIme.Text = "Korisničko ime je zauzeto.";
+                                lblUpozorenjeKorIme.Visible = true;
+                                ProvjeraKorIme = false;
+                            }
+                            else
+                            {
+                                ProvjeraKorIme = true;
+                            }
+
                         }
-                        else 
-                        {
-                            ProvjeraKorIme = true;
-                        }
-                        
+                    }
+                    catch (Exception)
+                    {
+                        string naslov1 = "Upozorenje";
+                        string poruka1 = "Provjerite internetsku vezu";
+                        PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                        poruke1.ShowDialog();
                     }
                 }          
             }           
@@ -382,23 +413,34 @@ namespace eNarudžba.Forme
                 }
                 else
                 {
-                    using (var db = new T34_DBEntities6())
+                    try
                     {
-                       
-                        var upitEmail = (from k in db.Korisnik where k.Email == txtBoxEmail.Text select k ).FirstOrDefault<Korisnik>();
+                        using (var db = new T34_DBEntities6())
+                        {
 
-                        if (upitEmail != null)
-                        {
-                            lblUpozorenjeEmail.Text = "E-mail je već registriran.";
-                            lblUpozorenjeEmail.Visible = true;
-                            ProvjeraEmail = false;
+                            var upitEmail = (from k in db.Korisnik where k.Email == txtBoxEmail.Text select k).FirstOrDefault<Korisnik>();
+
+                            if (upitEmail != null)
+                            {
+                                lblUpozorenjeEmail.Text = "E-mail je već registriran.";
+                                lblUpozorenjeEmail.Visible = true;
+                                ProvjeraEmail = false;
+                            }
+                            else
+                            {
+                                ProvjeraEmail = true;
+                            }
+
                         }
-                        else 
-                        {
-                            ProvjeraEmail = true;
-                        }
-                        
                     }
+                    catch (Exception)
+                    {
+                        string naslov1 = "Upozorenje";
+                        string poruka1 = "Provjerite internetsku vezu";
+                        PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                        poruke1.ShowDialog();
+                    }
+
                 }                 
             }            
         }

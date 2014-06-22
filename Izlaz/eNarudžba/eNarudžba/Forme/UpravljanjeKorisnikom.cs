@@ -43,13 +43,25 @@ namespace eNarudžba.Forme
         /// </summary>
         private void PrikaziPasivne()
         {
-            using (T34_DBEntities6 db=new T34_DBEntities6())
+            try
             {
-                var upit = (from k in db.Korisnik where k.status == 1 && k.TipKorisnika==2 select new {OIB=k.OIB, Ime=k.Ime, Prezime=k.Prezime, KorisnickoIme=k.Username }).ToList();
-                BindingSource bindingSourcePasivni = new BindingSource();
-                bindingSourcePasivni.DataSource = upit;
-                dgvPasivni.DataSource = bindingSourcePasivni;
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from k in db.Korisnik where k.status == 1 && k.TipKorisnika == 2 select new { OIB = k.OIB, Ime = k.Ime, Prezime = k.Prezime, KorisnickoIme = k.Username }).ToList();
+                    BindingSource bindingSourcePasivni = new BindingSource();
+                    bindingSourcePasivni.DataSource = upit;
+                    dgvPasivni.DataSource = bindingSourcePasivni;
+                    dgvPasivni.Columns[3].HeaderText = "Korisničko ime";
+                }
             }
+            catch (Exception)
+            {
+                string naslov1 = "Upozorenje";
+                string poruka1 = "Provjerite internetsku vezu";
+                PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                poruke1.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -58,13 +70,25 @@ namespace eNarudžba.Forme
         /// </summary>
         private void PrikaziAktivne()
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from k in db.Korisnik where k.status == 0 && k.TipKorisnika==2 select new {OIB=k.OIB, Ime = k.Ime, Prezime = k.Prezime, KorisnickoIme = k.Username }).ToList();
-                BindingSource bindingSourceAktivni = new BindingSource();
-                bindingSourceAktivni.DataSource = upit;
-                dgvAktivni.DataSource = bindingSourceAktivni;
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from k in db.Korisnik where k.status == 0 && k.TipKorisnika == 2 select new { OIB = k.OIB, Ime = k.Ime, Prezime = k.Prezime, KorisnickoIme = k.Username }).ToList();
+                    BindingSource bindingSourceAktivni = new BindingSource();
+                    bindingSourceAktivni.DataSource = upit;
+                    dgvAktivni.DataSource = bindingSourceAktivni;
+                    dgvAktivni.Columns[3].HeaderText = "Korisničko ime";
+                }
             }
+            catch (Exception)
+            {
+                string naslov1 = "Upozorenje";
+                string poruka1 = "Provjerite internetsku vezu";
+                PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                poruke1.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -104,21 +128,32 @@ namespace eNarudžba.Forme
         {
             if (ProvjeraP)
             {
-                Korisnik korisnik;
-                using (var dbSA = new T34_DBEntities6())
+                try
                 {
-                    korisnik = dbSA.Korisnik.Where(k => k.OIB == IdPasivni).FirstOrDefault<Korisnik>();
-                }
-                if (korisnik != null)
-                {
-                    korisnik.status = 0;
-                }
-                using (var dbUA = new T34_DBEntities6())
-                {
+                    Korisnik korisnik;
+                    using (var dbSA = new T34_DBEntities6())
+                    {
+                        korisnik = dbSA.Korisnik.Where(k => k.OIB == IdPasivni).FirstOrDefault<Korisnik>();
+                    }
+                    if (korisnik != null)
+                    {
+                        korisnik.status = 0;
+                    }
+                    using (var dbUA = new T34_DBEntities6())
+                    {
 
-                    dbUA.Entry(korisnik).State = System.Data.Entity.EntityState.Modified;
-                    dbUA.SaveChanges();
+                        dbUA.Entry(korisnik).State = System.Data.Entity.EntityState.Modified;
+                        dbUA.SaveChanges();
+                    }
                 }
+                catch (Exception)
+                {
+                    string naslov1 = "Upozorenje";
+                    string poruka1 = "Provjerite internetsku vezu";
+                    PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                    poruke1.ShowDialog();
+                }
+
             }
             else
             {
@@ -146,21 +181,32 @@ namespace eNarudžba.Forme
         {
             if (ProvjeraA)
             {
-                Korisnik korisnik2;
-                using (var dbSD = new T34_DBEntities6())
+                try
                 {
-                    korisnik2 = dbSD.Korisnik.Where(k => k.OIB == IdAktivni).FirstOrDefault<Korisnik>();
-                }
-                if (korisnik2 != null)
-                {
-                    korisnik2.status = 1;
-                }
-                using (var dbUD = new T34_DBEntities6())
-                {
+                    Korisnik korisnik2;
+                    using (var dbSD = new T34_DBEntities6())
+                    {
+                        korisnik2 = dbSD.Korisnik.Where(k => k.OIB == IdAktivni).FirstOrDefault<Korisnik>();
+                    }
+                    if (korisnik2 != null)
+                    {
+                        korisnik2.status = 1;
+                    }
+                    using (var dbUD = new T34_DBEntities6())
+                    {
 
-                    dbUD.Entry(korisnik2).State = System.Data.Entity.EntityState.Modified;
-                    dbUD.SaveChanges();
+                        dbUD.Entry(korisnik2).State = System.Data.Entity.EntityState.Modified;
+                        dbUD.SaveChanges();
+                    }
                 }
+                catch (Exception)
+                {
+                    string naslov1 = "Upozorenje";
+                    string poruka1 = "Provjerite internetsku vezu";
+                    PorukeRegistracija poruke1 = new PorukeRegistracija(naslov1, poruka1);
+                    poruke1.ShowDialog();
+                }
+                
             }
             else
             {

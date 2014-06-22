@@ -39,15 +39,26 @@ namespace eNarudžba.Forme
         /// </summary>
         private void PonudaHrane()
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from h in db.Hrana join v in db.VelicinaHrane on h.IDvelicinaHrane equals v.IDvelicinaHrane select new { h.IDhrana, h.Naziv, h.Cijena, v.Opis }).ToList();
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from h in db.Hrana join v in db.VelicinaHrane on h.IDvelicinaHrane equals v.IDvelicinaHrane select new { h.IDhrana, h.Naziv, h.Cijena, v.Opis }).ToList();
 
-                BindingSource bindingSourcePonudaJelovnika = new BindingSource();
-                bindingSourcePonudaJelovnika.DataSource = upit;
-                dgvPonudaJelovnika.DataSource = bindingSourcePonudaJelovnika;
-                dgvPonudaJelovnika.Columns[0].HeaderText = "R.broj";
+                    BindingSource bindingSourcePonudaJelovnika = new BindingSource();
+                    bindingSourcePonudaJelovnika.DataSource = upit;
+                    dgvPonudaJelovnika.DataSource = bindingSourcePonudaJelovnika;
+                    dgvPonudaJelovnika.Columns[0].HeaderText = "R.broj";
+                }
             }
+            catch (Exception)
+            {
+                string poruka = "Provjerite internetsku vezu";
+                string naslov = "Obavijest";
+                PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -65,13 +76,24 @@ namespace eNarudžba.Forme
         /// <param name="id">ID hrane za koju se prikazuju komentari</param>
         private void PrikaziKomentare(int id)
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from k in db.komentariHrana join h in db.Hrana on k.hranaID equals h.IDhrana where h.IDhrana==id select new { Komentar=k.komentarHrana }).ToList();
-                BindingSource bindingSourceKomentari = new BindingSource();
-                bindingSourceKomentari.DataSource = upit;
-                dgvKomentari.DataSource = bindingSourceKomentari;
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from k in db.komentariHrana join h in db.Hrana on k.hranaID equals h.IDhrana where h.IDhrana == id select new { Komentar = k.komentarHrana }).ToList();
+                    BindingSource bindingSourceKomentari = new BindingSource();
+                    bindingSourceKomentari.DataSource = upit;
+                    dgvKomentari.DataSource = bindingSourceKomentari;
+                }
             }
+            catch (Exception)
+            {
+                string poruka = "Provjerite internetsku vezu";
+                string naslov = "Obavijest";
+                PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -81,15 +103,25 @@ namespace eNarudžba.Forme
         /// <param name="id">ID hrane za koju se prikazuju sastojci</param>
         private void PrikaziSastojke(int id)
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from s in db.Sastojci join hs in db.HranaSastojci on s.IDsastojci equals hs.IDsastojci join h in db.Hrana on hs.IDhrana equals h.IDhrana where hs.IDhrana == id select new {s.Naziv }).ToList();
-                BindingSource bindingSourceSastojci = new BindingSource();
-                bindingSourceSastojci.DataSource = upit;
-                dgvSastojci.DataSource = bindingSourceSastojci;
-                dgvSastojci.Columns[0].HeaderText = "Naziv sastojka";
-
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from s in db.Sastojci join hs in db.HranaSastojci on s.IDsastojci equals hs.IDsastojci join h in db.Hrana on hs.IDhrana equals h.IDhrana where hs.IDhrana == id select new { s.Naziv }).ToList();
+                    BindingSource bindingSourceSastojci = new BindingSource();
+                    bindingSourceSastojci.DataSource = upit;
+                    dgvSastojci.DataSource = bindingSourceSastojci;
+                    dgvSastojci.Columns[0].HeaderText = "Naziv sastojka";
+                }
             }
+            catch (Exception)
+            {
+                string poruka = "Provjerite internetsku vezu";
+                string naslov = "Obavijest";
+                PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -131,42 +163,52 @@ namespace eNarudžba.Forme
 
             if (IdHrana.Count > 0)
             {
-                //pohranjujemo narudžbu
-                using (var db = new T34_DBEntities6())
+                try
                 {
-                    DateTime vrijemeNarudzbe = DateTime.Now;
-
-                    Narudzba narudzba = new Narudzba
+                    //pohranjujemo narudžbu
+                    using (var db = new T34_DBEntities6())
                     {
-                        DatumVrijemeZaprimanja = vrijemeNarudzbe,
-                        IDnarucitelj = oibKorisnika
-                    };
-                    db.Narudzba.Add(narudzba);
-                    db.SaveChanges();
+                        DateTime vrijemeNarudzbe = DateTime.Now;
 
-
-                    //dohvaćamo ID te narudžbe
-                    var upitID = (from n in db.Narudzba where n.IDnarucitelj == OibKorisnika select n).OrderByDescending(n => n.DatumVrijemeZaprimanja).FirstOrDefault();
-                    IdNarudzbe = upitID.IDnarudzba;
-
-
-                    //pohranjujem naručenu hranu za tu narudžbu
-
-                    foreach (var item in IdHrana)
-                    {
-                        NarudzbaHrana narudzbaHrana = new NarudzbaHrana
+                        Narudzba narudzba = new Narudzba
                         {
-                            IDnarudzba = IdNarudzbe,
-                            IDhrana = item
+                            DatumVrijemeZaprimanja = vrijemeNarudzbe,
+                            IDnarucitelj = oibKorisnika
                         };
-                        db.NarudzbaHrana.Add(narudzbaHrana);
+                        db.Narudzba.Add(narudzba);
                         db.SaveChanges();
+
+
+                        //dohvaćamo ID te narudžbe
+                        var upitID = (from n in db.Narudzba where n.IDnarucitelj == OibKorisnika select n).OrderByDescending(n => n.DatumVrijemeZaprimanja).FirstOrDefault();
+                        IdNarudzbe = upitID.IDnarudzba;
+
+
+                        //pohranjujem naručenu hranu za tu narudžbu
+
+                        foreach (var item in IdHrana)
+                        {
+                            NarudzbaHrana narudzbaHrana = new NarudzbaHrana
+                            {
+                                IDnarudzba = IdNarudzbe,
+                                IDhrana = item
+                            };
+                            db.NarudzbaHrana.Add(narudzbaHrana);
+                            db.SaveChanges();
+                        }
                     }
+                    string poruka = "Uspješno ste naručili hranu";
+                    string naslov = "Obavijest";
+                    PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
+                    upozorenje.ShowDialog();
                 }
-                string poruka = "Uspješno ste naručili hranu";
-                string naslov = "Obavijest";
-                PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
-                upozorenje.ShowDialog();
+                catch (Exception)
+                {
+                    string poruka = "Provjerite internetsku vezu";
+                    string naslov = "Obavijest";
+                    PorukePonuda upozorenje = new PorukePonuda(naslov, poruka);
+                    upozorenje.ShowDialog();
+                }  
             }
             else
             {

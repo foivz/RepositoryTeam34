@@ -49,18 +49,33 @@ namespace eNarudžba.Forme
         /// </summary>
         private void PrikaziZaprimljeneNarudzbe() 
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
 
-                var upit = (from n in db.Narudzba join k in db.Korisnik on n.IDnarucitelj equals k.OIB join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba
-                            join h in db.Hrana on nh.IDhrana equals h.IDhrana  where n.Zavrseno != 1 
-                            group new { n, k, nh, h } by new { n.IDnarudzba, n.DatumVrijemeZaprimanja, k.Ime, k.Prezime, k.Adresa } 
-                            into grup select new { grup.Key.IDnarudzba, grup.Key.DatumVrijemeZaprimanja, Cijena = grup.Sum(h => h.h.Cijena), grup.Key.Ime, grup.Key.Prezime, grup.Key.Adresa }).OrderByDescending(n => n.IDnarudzba).ToList();
+                    var upit = (from n in db.Narudzba
+                                join k in db.Korisnik on n.IDnarucitelj equals k.OIB
+                                join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba
+                                join h in db.Hrana on nh.IDhrana equals h.IDhrana
+                                where n.Zavrseno != 1
+                                group new { n, k, nh, h } by new { n.IDnarudzba, n.DatumVrijemeZaprimanja, k.Ime, k.Prezime, k.Adresa }
+                                    into grup
+                                    select new { grup.Key.IDnarudzba, grup.Key.DatumVrijemeZaprimanja, Cijena = grup.Sum(h => h.h.Cijena), grup.Key.Ime, grup.Key.Prezime, grup.Key.Adresa }).OrderByDescending(n => n.IDnarudzba).ToList();
 
-                BindingSource bindingSourceZaprimljeneNarudzbe = new BindingSource();
-                bindingSourceZaprimljeneNarudzbe.DataSource = upit;
-                dgvZaprimljeneNarudzbe.DataSource = bindingSourceZaprimljeneNarudzbe;
+                    BindingSource bindingSourceZaprimljeneNarudzbe = new BindingSource();
+                    bindingSourceZaprimljeneNarudzbe.DataSource = upit;
+                    dgvZaprimljeneNarudzbe.DataSource = bindingSourceZaprimljeneNarudzbe;
+                }
             }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeStatus upozorenje = new PorukeStatus(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -70,14 +85,25 @@ namespace eNarudžba.Forme
         /// <param name="id">ID narudžbe za koju se prikazuju detalji</param>
         private void PrikaziZaprimljeneNarudzbeDetalji(int id)
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB join vh in db.VelicinaHrane on h.IDvelicinaHrane equals vh.IDvelicinaHrane where n.IDnarudzba == id select new { h.IDhrana, Hrana = h.Naziv, CijenaHrane = h.Cijena }).ToList();
-                BindingSource bindingSourceZaprimljeneNarudzbeDetalji = new BindingSource();
-                bindingSourceZaprimljeneNarudzbeDetalji.DataSource = upit;
-                dgvZaprimljeneNarudzbeDetalji.DataSource = bindingSourceZaprimljeneNarudzbeDetalji;
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from n in db.Narudzba join nh in db.NarudzbaHrana on n.IDnarudzba equals nh.IDnarudzba join h in db.Hrana on nh.IDhrana equals h.IDhrana join k in db.Korisnik on n.IDnarucitelj equals k.OIB join vh in db.VelicinaHrane on h.IDvelicinaHrane equals vh.IDvelicinaHrane where n.IDnarudzba == id select new { h.IDhrana, Hrana = h.Naziv, CijenaHrane = h.Cijena }).ToList();
+                    BindingSource bindingSourceZaprimljeneNarudzbeDetalji = new BindingSource();
+                    bindingSourceZaprimljeneNarudzbeDetalji.DataSource = upit;
+                    dgvZaprimljeneNarudzbeDetalji.DataSource = bindingSourceZaprimljeneNarudzbeDetalji;
 
+                }
             }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeStatus upozorenje = new PorukeStatus(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
  
         }
 

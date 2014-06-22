@@ -62,7 +62,7 @@
             this.btnUpravljanjeKorisnikom.Name = "btnUpravljanjeKorisnikom";
             this.btnUpravljanjeKorisnikom.Size = new System.Drawing.Size(283, 62);
             this.btnUpravljanjeKorisnikom.TabIndex = 1;
-            this.btnUpravljanjeKorisnikom.Text = "Upravljanje korisnikom";
+            this.btnUpravljanjeKorisnikom.Text = "Upravljanje naručiteljima";
             this.toolTip1.SetToolTip(this.btnUpravljanjeKorisnikom, "Gumb za upravljanje korisnikom");
             this.btnUpravljanjeKorisnikom.UseVisualStyleBackColor = false;
             this.btnUpravljanjeKorisnikom.Click += new System.EventHandler(this.btnUpravljanjeKorisnikom_Click);

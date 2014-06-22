@@ -39,16 +39,27 @@ namespace eNarudžba.Forme
         /// </summary>
         private void prikaziStatuse()
         {
-            using (T34_DBEntities6 db = new T34_DBEntities6())
+            try
             {
-                var upit = (from ns in db.NarudzbaStatus join n in db.Narudzba on ns.IDnarudzba equals n.IDnarudzba join s in db.Status on ns.IDstatus equals s.IDstatus where n.IDnarudzba==idNarudzbe select new { s.Naziv, ns.VrijemeKreiranjaStatusa}).ToList();
+                using (T34_DBEntities6 db = new T34_DBEntities6())
+                {
+                    var upit = (from ns in db.NarudzbaStatus join n in db.Narudzba on ns.IDnarudzba equals n.IDnarudzba join s in db.Status on ns.IDstatus equals s.IDstatus where n.IDnarudzba == idNarudzbe select new { s.Naziv, ns.VrijemeKreiranjaStatusa }).ToList();
 
-                BindingSource bindingSourcePracenjeStanja = new BindingSource();
-                bindingSourcePracenjeStanja.DataSource = upit;
-                dgvPracenjeStanja.DataSource = bindingSourcePracenjeStanja;
-                dgvPracenjeStanja.Columns[0].HeaderText = "Status";
-                dgvPracenjeStanja.Columns[1].HeaderText = "Vrijeme kreiranja statusa";
+                    BindingSource bindingSourcePracenjeStanja = new BindingSource();
+                    bindingSourcePracenjeStanja.DataSource = upit;
+                    dgvPracenjeStanja.DataSource = bindingSourcePracenjeStanja;
+                    dgvPracenjeStanja.Columns[0].HeaderText = "Status";
+                    dgvPracenjeStanja.Columns[1].HeaderText = "Vrijeme kreiranja statusa";
+                }
             }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeKomentiranje upozorenje = new PorukeKomentiranje(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>

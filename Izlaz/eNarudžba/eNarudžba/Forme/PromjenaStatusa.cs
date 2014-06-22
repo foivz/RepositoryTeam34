@@ -30,36 +30,47 @@ namespace eNarudžba.Forme
         /// </summary>
         public void PrikaziStatuse()
         {
-            using (var db = new T34_DBEntities6())
+            try
             {
-                
-                var upit = (from n in db.Narudzba join ns in db.NarudzbaStatus on n.IDnarudzba equals ns.IDnarudzba join s in db.Status on ns.IDstatus equals s.IDstatus where n.IDnarudzba == idNarudzbe select s.IDstatus).ToList();
-                foreach (var status in upit)
+                using (var db = new T34_DBEntities6())
                 {
-                    if (status == 1) 
+
+                    var upit = (from n in db.Narudzba join ns in db.NarudzbaStatus on n.IDnarudzba equals ns.IDnarudzba join s in db.Status on ns.IDstatus equals s.IDstatus where n.IDnarudzba == idNarudzbe select s.IDstatus).ToList();
+                    foreach (var status in upit)
                     {
-                        rdbNarudzbaZaprimljena.Visible = false;
-                    }
-                    else if (status == 2) 
-                    {
-                        rdbNarudzbaNaRedu.Visible = false;
-                    }
-                    else if (status == 3)
-                    {
-                       rdbNarudzbaGotova.Visible = false;
-                    }
-                    else if (status == 4)
-                    {
-                        rdbDostavljaSe.Visible = false;
-                    }
-                    else if (status == 5)
-                    {
-                        rdbDostavljena.Visible = false;
-                        lblNarudzbaDOstavljena.Visible = true;
-                        btnPromijeniStatus.Visible = false;
+                        if (status == 1)
+                        {
+                            rdbNarudzbaZaprimljena.Visible = false;
+                        }
+                        else if (status == 2)
+                        {
+                            rdbNarudzbaNaRedu.Visible = false;
+                        }
+                        else if (status == 3)
+                        {
+                            rdbNarudzbaGotova.Visible = false;
+                        }
+                        else if (status == 4)
+                        {
+                            rdbDostavljaSe.Visible = false;
+                        }
+                        else if (status == 5)
+                        {
+                            rdbDostavljena.Visible = false;
+                            lblNarudzbaDOstavljena.Visible = true;
+                            btnPromijeniStatus.Visible = false;
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeKomentiranje upozorenje = new PorukeKomentiranje(naslov, poruka);
+                upozorenje.ShowDialog();
+            }
+
         }
 
         /// <summary>
@@ -71,81 +82,91 @@ namespace eNarudžba.Forme
         /// </summary>
         public void PromijeniStatus()
         {
-            using (var db = new T34_DBEntities6())
+            try
             {
-                if (rdbNarudzbaZaprimljena.Checked == true)
+                using (var db = new T34_DBEntities6())
                 {
-                    NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                    if (rdbNarudzbaZaprimljena.Checked == true)
                     {
-                        IDnarudzba=idNarudzbe,
-                        IDstatus=1,
-                        VrijemeKreiranjaStatusa=DateTime.Now
-                    };
-                    db.NarudzbaStatus.Add(narudzbaStatus);
-                    db.SaveChanges();
+                        NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        {
+                            IDnarudzba = idNarudzbe,
+                            IDstatus = 1,
+                            VrijemeKreiranjaStatusa = DateTime.Now
+                        };
+                        db.NarudzbaStatus.Add(narudzbaStatus);
+                        db.SaveChanges();
 
-                }
-                else if (rdbNarudzbaNaRedu.Checked == true)
-                {
-                    NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                    }
+                    else if (rdbNarudzbaNaRedu.Checked == true)
                     {
-                        IDnarudzba = idNarudzbe,
-                        IDstatus = 2,
-                        VrijemeKreiranjaStatusa = DateTime.Now
-                    };
-                    db.NarudzbaStatus.Add(narudzbaStatus);
-                    db.SaveChanges();
-                }
-                else if (rdbNarudzbaGotova.Checked == true)
-                {
-                    NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        {
+                            IDnarudzba = idNarudzbe,
+                            IDstatus = 2,
+                            VrijemeKreiranjaStatusa = DateTime.Now
+                        };
+                        db.NarudzbaStatus.Add(narudzbaStatus);
+                        db.SaveChanges();
+                    }
+                    else if (rdbNarudzbaGotova.Checked == true)
                     {
-                        IDnarudzba = idNarudzbe,
-                        IDstatus = 3,
-                        VrijemeKreiranjaStatusa = DateTime.Now
-                    };
-                    db.NarudzbaStatus.Add(narudzbaStatus);
-                    db.SaveChanges();
-                }
-                else if (rdbDostavljaSe.Checked == true)
-                {
-                    NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        {
+                            IDnarudzba = idNarudzbe,
+                            IDstatus = 3,
+                            VrijemeKreiranjaStatusa = DateTime.Now
+                        };
+                        db.NarudzbaStatus.Add(narudzbaStatus);
+                        db.SaveChanges();
+                    }
+                    else if (rdbDostavljaSe.Checked == true)
                     {
-                        IDnarudzba = idNarudzbe,
-                        IDstatus = 4,
-                        VrijemeKreiranjaStatusa = DateTime.Now
-                    };
-                    db.NarudzbaStatus.Add(narudzbaStatus);
-                    db.SaveChanges();
-                }
-                else if (rdbDostavljena.Checked == true)
-                {
-                    NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        {
+                            IDnarudzba = idNarudzbe,
+                            IDstatus = 4,
+                            VrijemeKreiranjaStatusa = DateTime.Now
+                        };
+                        db.NarudzbaStatus.Add(narudzbaStatus);
+                        db.SaveChanges();
+                    }
+                    else if (rdbDostavljena.Checked == true)
                     {
-                        IDnarudzba = idNarudzbe,
-                        IDstatus = 5,
-                        VrijemeKreiranjaStatusa = DateTime.Now
-                    };
-                    db.NarudzbaStatus.Add(narudzbaStatus);
-                    db.SaveChanges();
+                        NarudzbaStatus narudzbaStatus = new NarudzbaStatus
+                        {
+                            IDnarudzba = idNarudzbe,
+                            IDstatus = 5,
+                            VrijemeKreiranjaStatusa = DateTime.Now
+                        };
+                        db.NarudzbaStatus.Add(narudzbaStatus);
+                        db.SaveChanges();
 
-                    Narudzba narudzba;
-                    using (var dbS = new T34_DBEntities6())
-                    {
-                        narudzba = dbS.Narudzba.Where(n => n.IDnarudzba == idNarudzbe).FirstOrDefault<Narudzba>();
-                    }
-                    if (narudzba != null)
-                    {
-                        narudzba.Zavrseno = 1;
-                    }
-                    using (var dbU = new T34_DBEntities6())
-                    {
+                        Narudzba narudzba;
+                        using (var dbS = new T34_DBEntities6())
+                        {
+                            narudzba = dbS.Narudzba.Where(n => n.IDnarudzba == idNarudzbe).FirstOrDefault<Narudzba>();
+                        }
+                        if (narudzba != null)
+                        {
+                            narudzba.Zavrseno = 1;
+                        }
+                        using (var dbU = new T34_DBEntities6())
+                        {
 
-                        dbU.Entry(narudzba).State = System.Data.Entity.EntityState.Modified;
-                        dbU.SaveChanges();
+                            dbU.Entry(narudzba).State = System.Data.Entity.EntityState.Modified;
+                            dbU.SaveChanges();
+                        }
+
                     }
-                    
                 }
+            }
+            catch (Exception)
+            {
+                string naslov = "Upozorenje";
+                string poruka = "Provjerite internetsku vezu";
+                PorukeKomentiranje upozorenje = new PorukeKomentiranje(naslov, poruka);
+                upozorenje.ShowDialog();  
             }
         }
 
