@@ -47,7 +47,7 @@ namespace eNarudžba.Forme
                 bindingSourcePracenjeStanja.DataSource = upit;
                 dgvPracenjeStanja.DataSource = bindingSourcePracenjeStanja;
                 dgvPracenjeStanja.Columns[0].HeaderText = "Status";
-                dgvPracenjeStanja.Columns[0].HeaderText = "Vrijeme kreiranja statusa";
+                dgvPracenjeStanja.Columns[1].HeaderText = "Vrijeme kreiranja statusa";
             }
         }
 
